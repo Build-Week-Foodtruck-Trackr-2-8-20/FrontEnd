@@ -1,8 +1,6 @@
 import React from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import IconButton from '@material-ui/core/IconButton';
-import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import '../App.css';
 
@@ -24,15 +22,8 @@ const useStyles = makeStyles((theme) => ({
       alignSelf: 'flex-end',
     },
   }));
-function Header() {
-  return (
-    <div className="App">
-        Header
-    </div>
-  );
-}
 
-export default function ProminentAppBar() {
+export default function Header() {
     const classes = useStyles();
   
     return (
