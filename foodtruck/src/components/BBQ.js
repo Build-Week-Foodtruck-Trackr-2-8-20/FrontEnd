@@ -7,6 +7,7 @@ function BBQ() {
   return (
     <React.Fragment>
       <Container maxWidth="lg">
+          BBQ
         <Typography component="div" style={{ backgroundColor: '#ccc', height: '100vh' }} />
       </Container>
     </React.Fragment>

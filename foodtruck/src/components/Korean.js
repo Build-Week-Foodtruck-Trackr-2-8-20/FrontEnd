@@ -1,11 +1,16 @@
 import React from 'react';
+import Typography from '@material-ui/core/Typography';
+import Container from '@material-ui/core/Container';
 import '../App.css';
 
 function Korean() {
   return (
-    <div className="App">
-        Korean
-    </div>
+    <React.Fragment>
+      <Container maxWidth="lg">
+          Korean
+        <Typography component="div" style={{ backgroundColor: '#ccc', height: '100vh' }} />
+      </Container>
+    </React.Fragment>
   );
 }
 
