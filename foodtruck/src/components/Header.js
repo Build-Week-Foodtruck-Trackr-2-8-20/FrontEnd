@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -30,7 +31,26 @@ export default function ButtonAppBar() {
           <Typography variant="h6" className={classes.title}>
             Food Truck App
           </Typography>
-          <Button color="inherit">Login</Button>
+          <Button color="inherit">
+            <Link to="/">
+                <div className="home-button">Home</div>
+            </Link>
+          </Button>
+          <Button color="inherit">
+            <Link to="/tacos">
+                <div className="home-button">Tacos</div>
+            </Link>
+          </Button>
+          <Button color="inherit">
+            <Link to="/bbq">
+                <div className="home-button">BBQ</div>
+            </Link>
+          </Button>
+          <Button color="inherit">
+            <Link to="/korean">
+                <div className="home-button">Korean</div>
+            </Link>
+          </Button>
         </Toolbar>
       </AppBar>
     </div>
