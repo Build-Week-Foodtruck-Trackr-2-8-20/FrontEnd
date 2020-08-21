@@ -1,12 +1,16 @@
 import React from 'react';
 import './App.css';
+import ImgSlider from './Components/Carousel'
+
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        
-      </header>
+     
+      <div className="carousel">
+        <ImgSlider/>
+      </div>
+      
     </div>
   );
 }
