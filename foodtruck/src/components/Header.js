@@ -1,36 +1,28 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { makeStyles, createMuiTheme } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 
-const theme = createMuiTheme({
-    palette: {
-      primary: {
-        light: '#757ce8',
-        main: '#3f50b5',
-        dark: '#002884',
-        contrastText: '#fff',
-      },
-      secondary: {
-        light: '#ff7961',
-        main: '#f44336',
-        dark: '#ba000d',
-        contrastText: '#000',
-      },
-    },
-  });
-  
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
-    background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
+    background: '#cc0000',
   },
   title: {
     flexGrow: 1,
   },
+  button: {
+    margin: '10px',
+    backgroundColor: '#990000',
+    color: '#ddd',
+    underline: 'none'
+  },
+  link: {
+      color: '#ddd'
+  }
 }));
 
 export default function ButtonAppBar() {
@@ -38,29 +30,29 @@ export default function ButtonAppBar() {
 
   return (
     <div className={classes.root}>
-      <AppBar position="fixed" theme={theme} className={classes.root}>
+      <AppBar position="fixed" className={classes.root}>
         <Toolbar color="danger">
           <Typography variant="h6" className={classes.title}>
             Food Truck App
           </Typography>
-          <Button color="inherit">
+          <Button className={classes.button}>
             <Link to="/">
-                <div className="home-button">Home</div>
+                Home
             </Link>
           </Button>
-          <Button color="inherit">
+          <Button className={classes.button}>
             <Link to="/tacos">
-                <div className="home-button">Tacos</div>
+                Tacos
             </Link>
           </Button>
-          <Button color="inherit">
+          <Button className={classes.button}>
             <Link to="/bbq">
-                <div className="home-button">BBQ</div>
+                BBQ
             </Link>
           </Button>
-          <Button color="inherit">
+          <Button className={classes.button}>
             <Link to="/korean">
-                <div className="home-button">Korean</div>
+                Korean
             </Link>
           </Button>
         </Toolbar>

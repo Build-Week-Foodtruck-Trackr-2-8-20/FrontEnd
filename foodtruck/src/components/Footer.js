@@ -5,21 +5,24 @@ import Toolbar from '@material-ui/core/Toolbar';
 import '../App.css';
 
 const useStyles = makeStyles((theme) => ({
-    appBar: {
-      top: 'auto',
-      bottom: 0,
-    }
+    root: {
+      flexGrow: 1,
+      background: '#cc0000',
+    },
+    title: {
+      flexGrow: 1,
+    },
   }));
 
   export default function Footer() {
     const classes = useStyles();
   
     return (
-      <React.Fragment>
-        <AppBar position="static" color="secondary" className={classes.appBar}>
-          <Toolbar>
-          </Toolbar>
-        </AppBar>
-      </React.Fragment>
+        <div className={classes.root}>
+            <AppBar position="static" className={classes.root}>
+                <Toolbar>
+                </Toolbar>
+            </AppBar>
+        </div>
     );
   }
