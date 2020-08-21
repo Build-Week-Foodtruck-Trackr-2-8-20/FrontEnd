@@ -1,12 +1,12 @@
-import React from 'react';
-import { Route, Switch } from 'react-router-dom';
-import Header from './components/Header';
-import Footer from './components/Footer';
-import Korean from './components/Korean';
-import BBQ from './components/BBQ';
-import Tacos from './components/Tacos';
-import Home from './components/Home';
-import './App.css';
+import React from "react";
+import { Route, Switch } from "react-router-dom";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import Korean from "./components/Korean";
+import BBQ from "./components/BBQ";
+import Tacos from "./components/Tacos";
+import Home from "./components/Home";
+import "./App.css";
 
 function App() {
   return (
