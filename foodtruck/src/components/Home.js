@@ -7,8 +7,9 @@ function Home() {
   return (
     <React.Fragment>
       <Container maxWidth="lg">
-          Home
-        <Typography component="div" style={{ backgroundColor: '#ccc', height: '100vh' }} />
+        <Typography component="div" style={{ backgroundColor: '#eee', height: '100vh' }}>
+        <Typography>Home</Typography>
+        </Typography>
       </Container>
     </React.Fragment>
   );

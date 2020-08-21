@@ -8,7 +8,7 @@ function BBQ() {
     <React.Fragment>
       <Container maxWidth="lg">
           BBQ
-        <Typography component="div" style={{ backgroundColor: '#ccc', height: '100vh' }} />
+        <Typography component="div" style={{ backgroundColor: '#8B4513', height: '100vh' }} />
       </Container>
     </React.Fragment>
   );
