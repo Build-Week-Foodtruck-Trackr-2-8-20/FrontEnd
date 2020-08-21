@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { BrowserRouter as Router } from "react-router-dom";
 import "./index.css";
 import App from "./App";
 import { createStore } from "redux";
@@ -9,10 +10,10 @@ import { foodTruckReducer } from "./reducer/foodTruckReducer";
 const store = createStore(foodTruckReducer); // do we want to use middleware?
 
 ReactDOM.render(
-  <React.StrictMode>
-    <Provider store={store}>
+  <Provider store={store}>
+    <Router>
       <App />
-    </Provider>
-  </React.StrictMode>,
+    </Router>
+  </Provider>,
   document.getElementById("root")
 );
