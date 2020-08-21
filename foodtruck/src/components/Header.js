@@ -17,11 +17,10 @@ const useStyles = makeStyles((theme) => ({
   button: {
     margin: '10px',
     backgroundColor: '#fedc56',
-    color: '#ddd',
-    underline: 'none'
+    color: '#ddd'
   },
   link: {
-      color: '#ddd'
+      textDecoration:'none'
   }
 }));
 
@@ -36,22 +35,22 @@ export default function ButtonAppBar() {
             Food Truck App
           </Typography>
           <Button className={classes.button}>
-            <Link to="/">
+            <Link to="/" className={classes.link}>
                 Home
             </Link>
           </Button>
           <Button className={classes.button}>
-            <Link to="/tacos">
+            <Link to="/tacos" className={classes.link}>
                 Tacos
             </Link>
           </Button>
           <Button className={classes.button}>
-            <Link to="/bbq">
+            <Link to="/bbq" className={classes.link}>
                 BBQ
             </Link>
           </Button>
           <Button className={classes.button}>
-            <Link to="/korean">
+            <Link to="/korean" className={classes.link}>
                 Korean
             </Link>
           </Button>
