@@ -82,10 +82,9 @@ export default function Header() {
       <CssBaseline />
       <AppBar
         position="fixed"
-        className={clsx(classes.appBar, {
+        className={clsx(classes.appBar, classes.root, {
           [classes.appBarShift]: open,
         })}
-        className={classes.root}
       >
         <Toolbar>
           <Typography variant="h6" noWrap className={classes.title}>
