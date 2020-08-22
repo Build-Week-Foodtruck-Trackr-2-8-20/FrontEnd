@@ -8,7 +8,7 @@ function Tacos() {
     <React.Fragment>
       <Container maxWidth="lg">
           Tacos
-        <Typography component="div" style={{ backgroundColor: '#ccc', height: '100vh' }} />
+        <Typography component="div" style={{ backgroundColor: '#006200', height: '100vh' }} />
       </Container>
     </React.Fragment>
   );

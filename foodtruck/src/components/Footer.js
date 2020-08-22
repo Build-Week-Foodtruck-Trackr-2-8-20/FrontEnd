@@ -5,32 +5,12 @@ import Toolbar from '@material-ui/core/Toolbar';
 import '../App.css';
 
 const useStyles = makeStyles((theme) => ({
-    text: {
-      padding: theme.spacing(2, 2, 0),
-    },
-    paper: {
-      paddingBottom: 50,
-    },
-    list: {
-      marginBottom: theme.spacing(2),
-    },
-    subheader: {
-      backgroundColor: theme.palette.background.paper,
-    },
-    appBar: {
-      top: 'auto',
-      bottom: 0,
-    },
-    grow: {
+    root: {
       flexGrow: 1,
+      background: '#cc0000',
     },
-    fabButton: {
-      position: 'absolute',
-      zIndex: 1,
-      top: -30,
-      left: 0,
-      right: 0,
-      margin: '0 auto',
+    title: {
+      flexGrow: 1,
     },
   }));
 
@@ -38,11 +18,11 @@ const useStyles = makeStyles((theme) => ({
     const classes = useStyles();
   
     return (
-      <React.Fragment>
-        <AppBar position="fixed" color="primary" className={classes.appBar}>
-          <Toolbar>
-          </Toolbar>
-        </AppBar>
-      </React.Fragment>
+        <div className={classes.root}>
+            <AppBar position="static" className={classes.root}>
+                <Toolbar>
+                </Toolbar>
+            </AppBar>
+        </div>
     );
   }
