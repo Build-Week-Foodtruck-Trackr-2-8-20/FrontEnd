@@ -14,7 +14,8 @@ import '../App.css';
 const useStyles = makeStyles({
   root: {
     backgroundColor: '#ddd',
-    margin: '50px'
+    margin: '20%',
+    width: '60%'
   },
   input: {
       margin: '10px',
@@ -30,6 +31,14 @@ function Registration() {
       setValue(event.target.value);
     };
 
+//imports
+//state declarations
+//validation method
+//inputChange
+//formSubmit
+//useEffect
+//formSchema
+//return statement
   return (
     <Container>
         <FormControl className={classes.root}>
