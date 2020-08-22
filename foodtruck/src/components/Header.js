@@ -14,8 +14,6 @@ import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
 
 const drawerWidth = 240;
 
@@ -59,24 +57,11 @@ const useStyles = makeStyles((theme) => ({
     ...theme.mixins.toolbar,
     justifyContent: 'flex-start',
   },
-  content: {
-    flexGrow: 1,
-    padding: theme.spacing(3),
-    transition: theme.transitions.create('margin', {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
-    }),
-    marginRight: -drawerWidth,
-  },
-  contentShift: {
-    transition: theme.transitions.create('margin', {
-      easing: theme.transitions.easing.easeOut,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
-    marginRight: 0,
-  },
+  link: {
+    color: '#000',
+    textDecoration: 'none'
+  }
 }));
-
 
 
 export default function Header() {
@@ -133,26 +118,26 @@ export default function Header() {
         </div>
         <Divider />
         <List>
-        <ListItem>
-            <Link to="/" className={classes.link}>
-                Home
-            </Link>
-        </ListItem>
-        <ListItem>
-        <Link to="/tacos" className={classes.link}>
-                Tacos
-            </Link>
-        </ListItem>
-        <ListItem>
-        <Link to="/bbq" className={classes.link}>
-                BBQ
-            </Link>
-        </ListItem>
-        <ListItem>
-        <Link to="/korean" className={classes.link}>
-                Korean
-            </Link>
-        </ListItem>
+          <ListItem>
+              <Link to="/" className={classes.link}>
+                  Home
+              </Link>
+          </ListItem>
+          <ListItem>
+              <Link to="/tacos" className={classes.link}>
+                  Tacos
+              </Link>
+          </ListItem>
+          <ListItem>
+              <Link to="/bbq" className={classes.link}>
+                  BBQ
+              </Link>
+          </ListItem>
+          <ListItem>
+              <Link to="/korean" className={classes.link}>
+                  Korean
+              </Link>
+          </ListItem>
         </List>
       </Drawer>
     </div>
