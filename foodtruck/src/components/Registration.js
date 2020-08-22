@@ -26,10 +26,10 @@ const validate = values => {
     errors.firstName = 'Must be 15 characters or less';
   }
 
-  if (!values.lastName) {
-    errors.lastName = 'Required';
-  } else if (values.lastName.length > 20) {
-    errors.lastName = 'Must be 20 characters or less';
+  if (!values.userName) {
+    errors.userName = 'Required';
+  } else if (values.userName.length > 20) {
+    errors.userName = 'Must be 20 characters or less';
   }
 
   if (!values.email) {
@@ -52,7 +52,7 @@ function Registration() {
     const formik = useFormik({
       initialValues: {
         firstName: '',
-        lastName: '',
+        userName: '',
         email: '',
       },
       validate,
@@ -84,17 +84,17 @@ function Registration() {
        {formik.touched.firstName && formik.errors.firstName ? (
          <div>{formik.errors.firstName}</div>
        ) : null}
-       <label htmlFor="lastName">Last Name</label>
+       <label htmlFor="userNameInput">Last Name</label>
        <input
-         id="lastName"
-         name="lastName"
+         id="userNameInput"
+         name="userName"
          type="text"
          onChange={formik.handleChange}
          onBlur={formik.handleBlur}
-         value={formik.values.lastName}
+         value={formik.values.userName}
        />
-       {formik.touched.lastName && formik.errors.lastName ? (
-         <div>{formik.errors.lastName}</div>
+       {formik.touched.userName && formik.errors.userName ? (
+         <div>{formik.errors.userName}</div>
        ) : null}
        <label htmlFor="email">Email Address</label>
        <input
