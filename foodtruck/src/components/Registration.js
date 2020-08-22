@@ -38,6 +38,12 @@ const validate = values => {
     errors.email = 'Invalid email address';
   }
 
+  if (!values.password) {
+    errors.password = 'Required';
+  } else if (values.password.length > 20) {
+    errors.password = 'Must be 20 characters or less';
+  }
+
   return errors;
 };
 
@@ -54,6 +60,7 @@ function Registration() {
         firstName: '',
         userName: '',
         email: '',
+        password: ''
       },
       validate,
       onSubmit: values => {
@@ -84,7 +91,7 @@ function Registration() {
        {formik.touched.firstName && formik.errors.firstName ? (
          <div>{formik.errors.firstName}</div>
        ) : null}
-       <label htmlFor="userNameInput">Last Name</label>
+       <label htmlFor="userNameInput">Username</label>
        <input
          id="userNameInput"
          name="userName"
@@ -107,6 +114,18 @@ function Registration() {
        />
        {formik.touched.email && formik.errors.email ? (
          <div>{formik.errors.email}</div>
+       ) : null}
+      <label htmlFor="passwordInput">Password</label>
+       <input
+         id="passwordInput"
+         name="password"
+         type="password"
+         onChange={formik.handleChange}
+         onBlur={formik.handleBlur}
+         value={formik.values.password}
+       />
+       {formik.touched.password && formik.errors.password ? (
+         <div>{formik.errors.password}</div>
        ) : null}
        <button type="submit">Submit</button>
      </form>
