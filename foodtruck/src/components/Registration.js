@@ -1,14 +1,9 @@
 import React from 'react';
-import Radio from '@material-ui/core/Radio';
-import RadioGroup from '@material-ui/core/RadioGroup';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
-import FormControl from '@material-ui/core/FormControl';
-import InputLabel from '@material-ui/core/InputLabel';
-import Input from '@material-ui/core/Input';
-import Button from '@material-ui/core/Button';
+import Button from "@material-ui/core/Button";
+import TextField from "@material-ui/core/TextField";
 import { makeStyles } from '@material-ui/core/styles';
+import { useFormik } from 'formik';
 import '../App.css';
 
 const useStyles = makeStyles({
@@ -23,6 +18,29 @@ const useStyles = makeStyles({
   }
 });
 
+const validate = values => {
+  const errors = {};
+  if (!values.firstName) {
+    errors.firstName = 'Required';
+  } else if (values.firstName.length > 15) {
+    errors.firstName = 'Must be 15 characters or less';
+  }
+
+  if (!values.lastName) {
+    errors.lastName = 'Required';
+  } else if (values.lastName.length > 20) {
+    errors.lastName = 'Must be 20 characters or less';
+  }
+
+  if (!values.email) {
+    errors.email = 'Required';
+  } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
+    errors.email = 'Invalid email address';
+  }
+
+  return errors;
+};
+
 function Registration() {
     const classes = useStyles();
     const [value, setValue] = React.useState('diner');
@@ -30,6 +48,18 @@ function Registration() {
     const handleChange = (event) => {
       setValue(event.target.value);
     };
+
+    const formik = useFormik({
+      initialValues: {
+        firstName: '',
+        lastName: '',
+        email: '',
+      },
+      validate,
+      onSubmit: values => {
+        alert(JSON.stringify(values, null, 2));
+      },
+    });
 
 //imports
 //state declarations
@@ -41,20 +71,45 @@ function Registration() {
 //return statement
   return (
     <Container>
-        <FormControl className={classes.root}>
-            <Typography>Registration</Typography>
-            <InputLabel className={classes.input} htmlFor="userNameInput">Username</InputLabel>
-            <Input id="userNameInput" aria-describedby="my-helper-text" />
-            <InputLabel  className={classes.input} htmlFor="emailInput">Email address</InputLabel>
-            <Input id="emailInput" aria-describedby="my-helper-text" />
-            <RadioGroup aria-label="gender" name="gender1" value={value} onChange={handleChange}>
-                <FormControlLabel value="diner" control={<Radio />} label="Diner" />
-                <FormControlLabel value="operator" control={<Radio />} label="Operator" />
-            </RadioGroup>
-            <InputLabel className={classes.input} htmlFor="passwordInput">Password</InputLabel>
-            <Input id="passwordInput" aria-describedby="my-helper-text" />
-            <Button>Submit</Button>
-        </FormControl>
+     <form onSubmit={formik.handleSubmit}>
+       <label htmlFor="firstName">First Name</label>
+       <input
+         id="firstName"
+         name="firstName"
+         type="text"
+         onChange={formik.handleChange}
+         onBlur={formik.handleBlur}
+         value={formik.values.firstName}
+       />
+       {formik.touched.firstName && formik.errors.firstName ? (
+         <div>{formik.errors.firstName}</div>
+       ) : null}
+       <label htmlFor="lastName">Last Name</label>
+       <input
+         id="lastName"
+         name="lastName"
+         type="text"
+         onChange={formik.handleChange}
+         onBlur={formik.handleBlur}
+         value={formik.values.lastName}
+       />
+       {formik.touched.lastName && formik.errors.lastName ? (
+         <div>{formik.errors.lastName}</div>
+       ) : null}
+       <label htmlFor="email">Email Address</label>
+       <input
+         id="email"
+         name="email"
+         type="email"
+         onChange={formik.handleChange}
+         onBlur={formik.handleBlur}
+         value={formik.values.email}
+       />
+       {formik.touched.email && formik.errors.email ? (
+         <div>{formik.errors.email}</div>
+       ) : null}
+       <button type="submit">Submit</button>
+     </form>
     </Container>
   );
 }

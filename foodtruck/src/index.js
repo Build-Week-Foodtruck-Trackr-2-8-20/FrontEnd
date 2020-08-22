@@ -1,10 +1,5 @@
-
-
-
-
-
-import 'bootstrap/dist/css/bootstrap.min.css';
 import React from "react";
+//import 'bootstrap/dist/css/bootstrap.min.css';
 import ReactDOM from "react-dom";
 import { BrowserRouter as Router } from "react-router-dom";
 import "./index.css";
