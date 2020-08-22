@@ -2,7 +2,7 @@ import React from 'react';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import LogIn from './LogIn';
-import Registration from '../components/Registration';
+import Registration from '../Components/Registration';
 import '../App.css';
 
 function Home() {

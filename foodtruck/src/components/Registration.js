@@ -1,7 +1,5 @@
 import React from 'react';
 import Container from '@material-ui/core/Container';
-import Button from "@material-ui/core/Button";
-import TextField from "@material-ui/core/TextField";
 import { makeStyles } from '@material-ui/core/styles';
 import { useFormik } from 'formik';
 import '../App.css';
@@ -9,7 +7,6 @@ import '../App.css';
 const useStyles = makeStyles({
   root: {
     backgroundColor: '#ddd',
-    margin: '20%',
     width: '60%'
   },
   input: {
@@ -53,6 +50,7 @@ function Registration() {
 
     const handleChange = (event) => {
       setValue(event.target.value);
+      console.log("Change registered.")
     };
 
     const formik = useFormik({
@@ -60,10 +58,12 @@ function Registration() {
         firstName: '',
         userName: '',
         email: '',
-        password: ''
+        password: '',
+        picked: ''
       },
       validate,
       onSubmit: values => {
+        console.log("Form submitted")
         alert(JSON.stringify(values, null, 2));
       },
     });
@@ -77,8 +77,26 @@ function Registration() {
 //formSchema
 //return statement
   return (
-    <Container>
+    <Container className={classes.root}>
      <form onSubmit={formik.handleSubmit}>
+      <label htmlFor="operatorInput">Operator</label>
+       <input
+         id="operatorInput"
+         name="picked"
+         type="radio"
+         onChange={formik.handleChange}
+         onBlur={formik.handleBlur}
+         value={formik.values.operator}
+       />
+      <label htmlFor="dinerInput">Diner</label>
+       <input
+         id="dinerInput"
+         name="picked"
+         type="radio"
+         onChange={formik.handleChange}
+         onBlur={formik.handleBlur}
+         value={formik.values.diner}
+       />
        <label htmlFor="firstName">First Name</label>
        <input
          id="firstName"
@@ -119,7 +137,7 @@ function Registration() {
        <input
          id="passwordInput"
          name="password"
-         type="password"
+         type="text"
          onChange={formik.handleChange}
          onBlur={formik.handleBlur}
          value={formik.values.password}
