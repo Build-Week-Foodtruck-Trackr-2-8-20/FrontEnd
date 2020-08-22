@@ -1,9 +1,7 @@
-
-
-
-import ImgSlider from './Components/Carousel'
-import Login from './Components/Login'
 import React from "react";
+//import ImgSlider from './components/Carousel'
+import LogIn from './components/LogIn';
+import Registration from './components/Registration';
 import { Route, Switch } from "react-router-dom";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -18,16 +16,14 @@ function App() {
     <div className="App">
       <Header />
       <Switch>
+        <Route path="/login" render={() => <LogIn />} />
+        <Route path="/registration" render={() => <Registration />} />
         <Route path="/korean" render={() => <Korean />} />
         <Route path="/bbq" render={() => <BBQ />} />
         <Route path="/tacos" render={() => <Tacos />} />
         <Route path="/" component={Home} />
       </Switch>
-     <div>
-        <ImgSlider/> 
-     <div/>
       <Footer  />
-
     </div>
   );
 }

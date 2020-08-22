@@ -22,7 +22,7 @@ const userSchema = yup.object().shape({
 });
 
 
-function Login(props) {
+function LogIn(props) {
   const [user, setUser] = useState(intialState);
   return (
       <div className="loginForm">
@@ -93,5 +93,5 @@ function Login(props) {
   );
 }
 
-export default Login;
+export default LogIn;
 
