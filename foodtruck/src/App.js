@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import ImgSlider from './Components/Carousel'
-
+import Login from './Components/Login'
 
 function App() {
   return (
@@ -9,7 +9,12 @@ function App() {
      
       <div className="carousel">
         <ImgSlider/>
+
       </div>
+      <footer>
+      Log IN
+      <Login/>
+      </footer>
       
     </div>
   );
