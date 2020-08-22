@@ -8,6 +8,7 @@ import FormControl from '@material-ui/core/FormControl';
 import InputLabel from '@material-ui/core/InputLabel';
 import Input from '@material-ui/core/Input';
 import Button from '@material-ui/core/Button';
+import TextField from "@material-ui/core/TextField";
 import { makeStyles } from '@material-ui/core/styles';
 import '../App.css';
 
@@ -40,21 +41,44 @@ function Registration() {
 //formSchema
 //return statement
   return (
-    <Container>
-        <FormControl className={classes.root}>
-            <Typography>Registration</Typography>
-            <InputLabel className={classes.input} htmlFor="userNameInput">Username</InputLabel>
-            <Input id="userNameInput" aria-describedby="my-helper-text" />
-            <InputLabel  className={classes.input} htmlFor="emailInput">Email address</InputLabel>
-            <Input id="emailInput" aria-describedby="my-helper-text" />
-            <RadioGroup aria-label="gender" name="gender1" value={value} onChange={handleChange}>
-                <FormControlLabel value="diner" control={<Radio />} label="Diner" />
-                <FormControlLabel value="operator" control={<Radio />} label="Operator" />
-            </RadioGroup>
-            <InputLabel className={classes.input} htmlFor="passwordInput">Password</InputLabel>
-            <Input id="passwordInput" aria-describedby="my-helper-text" />
-            <Button>Submit</Button>
-        </FormControl>
+    <Container className={classes.root}>
+      <form onSubmit={() => {}}>
+        <TextField
+          id="name"
+          name="name"
+          label="Name"
+          fullWidth
+
+        />
+        <TextField
+          id="email"
+          name="email"
+          label="Email"
+          fullWidth
+        />
+        <TextField
+          id="password"
+          name="password"
+          label="Password"
+          fullWidth
+          type="password"
+        />
+        <TextField
+          id="confirmPassword"
+          name="confirmPassword"
+          label="Confirm Password"
+          fullWidth
+          type="password"
+        />
+        <Button
+          type="submit"
+          fullWidth
+          variant="raised"
+          color="primary"
+        >
+          Submit
+        </Button>
+      </form>
     </Container>
   );
 }
