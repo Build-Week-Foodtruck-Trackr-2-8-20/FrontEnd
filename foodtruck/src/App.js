@@ -1,3 +1,8 @@
+
+
+
+import ImgSlider from './Components/Carousel'
+import Login from './Components/Login'
 import React from "react";
 import { Route, Switch } from "react-router-dom";
 import Header from "./components/Header";
@@ -18,7 +23,11 @@ function App() {
         <Route path="/tacos" render={() => <Tacos />} />
         <Route path="/" component={Home} />
       </Switch>
-      <Footer />
+     <div>
+        <ImgSlider/> 
+     <div/>
+      <Footer  />
+
     </div>
   );
 }
