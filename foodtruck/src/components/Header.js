@@ -137,6 +137,17 @@ export default function Header() {
                   Korean
               </Link>
           </ListItem>
+          <Divider />
+          <ListItem>
+              <Link to="/login" className={classes.link}>
+                  Login
+              </Link>
+          </ListItem>
+          <ListItem>
+              <Link to="/registration" className={classes.link}>
+                  Registration
+              </Link>
+          </ListItem>
         </List>
       </Drawer>
     </div>
