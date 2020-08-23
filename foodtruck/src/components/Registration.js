@@ -7,7 +7,7 @@ import '../App.css';
 const useStyles = makeStyles({
   root: {
     backgroundColor: '#ddd',
-    width: '60%'
+    width: '80%'
   },
   input: {
       margin: '10px',
