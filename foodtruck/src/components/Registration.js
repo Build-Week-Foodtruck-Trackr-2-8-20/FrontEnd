@@ -1,12 +1,14 @@
 import React from 'react';
 import Container from '@material-ui/core/Container';
 import { makeStyles } from '@material-ui/core/styles';
-import { useFormik } from 'formik';
+import { useFormik, Field, Form, FormikProps } from 'formik';
+import * as Yup from 'yup';
 import '../App.css';
 
 const useStyles = makeStyles({
   root: {
     backgroundColor: '#ddd',
+    marginTop: '90px',
     width: '80%'
   },
   input: {
@@ -15,55 +17,32 @@ const useStyles = makeStyles({
   }
 });
 
-const validate = values => {
-  const errors = {};
-  if (!values.firstName) {
-    errors.firstName = 'Required';
-  } else if (values.firstName.length > 15) {
-    errors.firstName = 'Must be 15 characters or less';
-  }
-
-  if (!values.userName) {
-    errors.userName = 'Required';
-  } else if (values.userName.length > 20) {
-    errors.userName = 'Must be 20 characters or less';
-  }
-
-  if (!values.email) {
-    errors.email = 'Required';
-  } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
-    errors.email = 'Invalid email address';
-  }
-
-  if (!values.password) {
-    errors.password = 'Required';
-  } else if (values.password.length > 20) {
-    errors.password = 'Must be 20 characters or less';
-  }
-
-  return errors;
-};
-
 function Registration() {
     const classes = useStyles();
-    const [value, setValue] = React.useState('diner');
-
-    const handleChange = (event) => {
-      setValue(event.target.value);
-      console.log("Change registered.")
-    };
-
+    //const [value, setValue] = React.useState('diner');
+  
     const formik = useFormik({
       initialValues: {
-        firstName: '',
         userName: '',
         email: '',
         password: '',
-        picked: ''
+        userType: 'diner'
       },
-      validate,
+      validationSchema: Yup.object({
+        userType: Yup.string(),
+        userName: Yup.string()
+          .max(20, 'Must be 20 characters or less')
+          .required('Required'),
+        email: Yup.string()
+          .email('Invalid email address')
+          .required('Required'),
+        password: Yup.string()
+          .required('Required')
+      }),
+
       onSubmit: values => {
         console.log("Form submitted")
+        console.log(values)
         alert(JSON.stringify(values, null, 2));
       },
     });
@@ -79,36 +58,12 @@ function Registration() {
   return (
     <Container className={classes.root}>
      <form onSubmit={formik.handleSubmit}>
-      <label htmlFor="operatorInput">Operator</label>
-       <input
-         id="operatorInput"
-         name="picked"
-         type="radio"
-         onChange={formik.handleChange}
-         onBlur={formik.handleBlur}
-         value={formik.values.operator}
-       />
-      <label htmlFor="dinerInput">Diner</label>
-       <input
-         id="dinerInput"
-         name="picked"
-         type="radio"
-         onChange={formik.handleChange}
-         onBlur={formik.handleBlur}
-         value={formik.values.diner}
-       />
-       <label htmlFor="firstName">First Name</label>
-       <input
-         id="firstName"
-         name="firstName"
-         type="text"
-         onChange={formik.handleChange}
-         onBlur={formik.handleBlur}
-         value={formik.values.firstName}
-       />
-       {formik.touched.firstName && formik.errors.firstName ? (
-         <div>{formik.errors.firstName}</div>
-       ) : null}
+
+     <select name="userType" id="pet-select" onChange={formik.handleChange} value={formik.values.userType}>
+        <option value="">--Please choose an option--</option>
+        <option value="diner">Diner</option>
+        <option value="operator">Operator</option>
+      </select>
        <label htmlFor="userNameInput">Username</label>
        <input
          id="userNameInput"
@@ -137,7 +92,7 @@ function Registration() {
        <input
          id="passwordInput"
          name="password"
-         type="text"
+         type="password"
          onChange={formik.handleChange}
          onBlur={formik.handleBlur}
          value={formik.values.password}
