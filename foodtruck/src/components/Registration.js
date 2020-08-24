@@ -14,6 +14,9 @@ const useStyles = makeStyles({
   input: {
       margin: '10px',
       position: 'relative'
+  },
+  select: {
+    height: '50px'
   }
 });
 
@@ -58,8 +61,7 @@ function Registration() {
   return (
     <Container className={classes.root}>
      <form onSubmit={formik.handleSubmit}>
-
-     <select name="userType" id="pet-select" onChange={formik.handleChange} value={formik.values.userType}>
+     <select className={classes.select} name="userType" id="pet-select" onChange={formik.handleChange} value={formik.values.userType}>
         <option value="">--Please choose an option--</option>
         <option value="diner">Diner</option>
         <option value="operator">Operator</option>
