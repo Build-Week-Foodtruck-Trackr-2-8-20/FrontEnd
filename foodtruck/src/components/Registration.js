@@ -1,14 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Container from '@material-ui/core/Container';
 import { makeStyles } from '@material-ui/core/styles';
-import { useFormik, Field, Form, FormikProps } from 'formik';
+import { useFormik } from 'formik';
 import * as Yup from 'yup';
+import axios from "axios";
 import '../App.css';
 
 const useStyles = makeStyles({
   root: {
     backgroundColor: '#ddd',
-    marginTop: '90px',
+    margin: '200px auto',
+    padding: '10px',
     width: '80%'
   },
   input: {
@@ -16,14 +18,27 @@ const useStyles = makeStyles({
       position: 'relative'
   },
   select: {
-    height: '50px'
+    height: '50px',
+    width: '100%'
+  },
+  button: {
+    margin: '5px 0'
   }
 });
 
 function Registration() {
     const classes = useStyles();
     //const [value, setValue] = React.useState('diner');
+    const [ formState, setFormState ] = useState({
+      id: Date.now(),
+      userName: '',
+      email: '',
+      password: '',
+      userType: 'diner'
+    })
   
+    console.log(formState)
+
     const formik = useFormik({
       initialValues: {
         userName: '',
@@ -43,26 +58,31 @@ function Registration() {
           .required('Required')
       }),
 
-      onSubmit: (values, {resetForm}) => {
+      onSubmit: (values, {resetForm} ) => {
+        resetForm();
         console.log("Form submitted")
         console.log(values)
         alert(JSON.stringify(values, null, 2));
-        resetForm({ values: '' })
-      },
+        axios
+        .post("https://reqres.in/api/users", formState)
+        .then((res) => {
+            console.log(res.data)
+            setFormState({
+            userName: '',
+            email: '',
+            password: '',
+            userType: 'diner'
+            })
+        })
+        .catch((err) => console.log(err.response));
+      }
     });
 
-//imports
-//state declarations
-//validation method
-//inputChange
-//formSubmit
-//useEffect
-//formSchema
-//return statement
   return (
     <Container className={classes.root}>
      <form onSubmit={formik.handleSubmit}>
-     <select className={classes.select} name="userType" id="pet-select" onChange={formik.handleChange} value={formik.values.userType}>
+     <label htmlFor="userTypeInput">Username Type</label>
+     <select className={classes.select} name="userType" id="userTypeInput" onChange={formik.handleChange} value={formik.values.userType}>
         <option value="">--Please choose an option--</option>
         <option value="diner">Diner</option>
         <option value="operator">Operator</option>
@@ -103,7 +123,7 @@ function Registration() {
        {formik.touched.password && formik.errors.password ? (
          <div>{formik.errors.password}</div>
        ) : null}
-       <button type="submit">Submit</button>
+       <button className={classes.button} type="submit">Submit</button>
      </form>
     </Container>
   );
