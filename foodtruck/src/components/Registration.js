@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Container from '@material-ui/core/Container';
 import { makeStyles } from '@material-ui/core/styles';
 import { useFormik, Field, Form, FormikProps } from 'formik';
@@ -28,7 +28,16 @@ const useStyles = makeStyles({
 function Registration() {
     const classes = useStyles();
     //const [value, setValue] = React.useState('diner');
+    const [ formState, setFormState ] = useState({
+      id: Date.now(),
+      userName: '',
+      email: '',
+      password: '',
+      userType: 'diner'
+    })
   
+    console.log(formState)
+    
     const formik = useFormik({
       initialValues: {
         userName: '',
