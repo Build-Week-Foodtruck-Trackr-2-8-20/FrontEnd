@@ -28,7 +28,6 @@ const useStyles = makeStyles({
 
 function Registration() {
     const classes = useStyles();
-    //const [value, setValue] = React.useState('diner');
     const [ formState, setFormState ] = useState({
       id: Date.now(),
       userName: '',
