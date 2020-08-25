@@ -58,12 +58,23 @@ function Registration() {
           .required('Required')
       }),
 
-      onSubmit: (values, {resetForm}) => {
+      onSubmit: (values) => {
         console.log("Form submitted")
         console.log(values)
         alert(JSON.stringify(values, null, 2));
-        resetForm({ values: '' })
-      },
+        axios
+        .post("https://reqres.in/api/users", formState)
+        .then((res) => {
+            console.log(res.data)
+            setFormState({
+            userName: '',
+            email: '',
+            password: '',
+            userType: 'diner'
+            })
+        })
+        .catch((err) => console.log(err.response));
+      }
     });
 
   return (
