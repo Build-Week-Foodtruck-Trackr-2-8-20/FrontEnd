@@ -56,14 +56,6 @@ function Registration() {
       },
     });
 
-//imports
-//state declarations
-//validation method
-//inputChange
-//formSubmit
-//useEffect
-//formSchema
-//return statement
   return (
     <Container className={classes.root}>
      <form onSubmit={formik.handleSubmit}>
