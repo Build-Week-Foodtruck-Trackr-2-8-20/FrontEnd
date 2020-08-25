@@ -43,10 +43,11 @@ function Registration() {
           .required('Required')
       }),
 
-      onSubmit: values => {
+      onSubmit: (values, {resetForm}) => {
         console.log("Form submitted")
         console.log(values)
         alert(JSON.stringify(values, null, 2));
+        resetForm({ values: '' })
       },
     });
 
