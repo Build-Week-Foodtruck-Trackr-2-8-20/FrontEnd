@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Container from '@material-ui/core/Container';
 import { makeStyles } from '@material-ui/core/styles';
-import { useFormik, Field, Form, FormikProps } from 'formik';
+import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import axios from "axios";
 import '../App.css';
@@ -58,7 +58,8 @@ function Registration() {
           .required('Required')
       }),
 
-      onSubmit: (values) => {
+      onSubmit: (values, {resetForm} ) => {
+        resetForm();
         console.log("Form submitted")
         console.log(values)
         alert(JSON.stringify(values, null, 2));
