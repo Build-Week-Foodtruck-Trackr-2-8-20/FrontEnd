@@ -8,7 +8,6 @@ function Home() {
     <React.Fragment>
       <Container maxWidth="lg" component="div" style={{ backgroundColor: '#eee', height: '100vh' }}>
         <Typography>Home</Typography>
-
       </Container>
     </React.Fragment>
   );

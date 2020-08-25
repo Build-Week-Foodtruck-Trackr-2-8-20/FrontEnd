@@ -8,7 +8,8 @@ import '../App.css';
 const useStyles = makeStyles({
   root: {
     backgroundColor: '#ddd',
-    marginTop: '90px',
+    margin: '200px auto',
+    padding: '10px',
     width: '80%'
   },
   input: {
@@ -16,7 +17,11 @@ const useStyles = makeStyles({
       position: 'relative'
   },
   select: {
-    height: '50px'
+    height: '50px',
+    width: '100%'
+  },
+  button: {
+    margin: '5px 0'
   }
 });
 
@@ -62,7 +67,8 @@ function Registration() {
   return (
     <Container className={classes.root}>
      <form onSubmit={formik.handleSubmit}>
-     <select className={classes.select} name="userType" id="pet-select" onChange={formik.handleChange} value={formik.values.userType}>
+     <label htmlFor="userTypeInput">Username Type</label>
+     <select className={classes.select} name="userType" id="userTypeInput" onChange={formik.handleChange} value={formik.values.userType}>
         <option value="">--Please choose an option--</option>
         <option value="diner">Diner</option>
         <option value="operator">Operator</option>
@@ -103,7 +109,7 @@ function Registration() {
        {formik.touched.password && formik.errors.password ? (
          <div>{formik.errors.password}</div>
        ) : null}
-       <button type="submit">Submit</button>
+       <button className={classes.button} type="submit">Submit</button>
      </form>
     </Container>
   );
