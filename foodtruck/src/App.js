@@ -1,15 +1,15 @@
-import ImgSlider from "./Components/Carousel";
+import ImgSlider from "./components/Carousel";
 import React from "react";
 //import ImgSlider from './Components/Carousel'
-import LogIn from './Components/LogIn';
-import Registration from './Components/Registration';
+import LogIn from "./components/LogIn";
+import Registration from "./components/Registration";
 import { Route, Switch } from "react-router-dom";
-import Header from "./Components/Header";
-import Footer from "./Components/Footer";
-import Korean from "./Components/Korean";
-import BBQ from "./Components/BBQ";
-import Tacos from "./Components/Tacos";
-import Home from "./Components/Home";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import Korean from "./components/Korean";
+import BBQ from "./components/BBQ";
+import Tacos from "./components/Tacos";
+import Home from "./components/Home";
 import "./App.css";
 
 function App() {
@@ -29,7 +29,6 @@ function App() {
       </div>
       <Footer />
     </div>
-
   );
 }
 
