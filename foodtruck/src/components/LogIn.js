@@ -20,20 +20,9 @@ const intialState = {
   password: ""
 };
 
-<<<<<<< HEAD
-  username: yup
-    .string()
-    .required(),
-  password: yup
-    .string()
-    .required()
-    .max(13)
-    .min(8)
-=======
 const userSchema = yup.object().shape({
-  email: yup.string().email().required(),
+    username: yup.string().email().required(),
   password: yup.string().required().max(13).min(8),
->>>>>>> 8577c04362ad06a904940dee9f4c261f0e679dc8
 });
 
 function LogIn(props) {
