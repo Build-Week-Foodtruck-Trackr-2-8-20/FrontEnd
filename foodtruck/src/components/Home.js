@@ -3,6 +3,9 @@ import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import { makeStyles } from "@material-ui/core/styles";
 import '../App.css';
+import  ImgSlider from "./Carousel"
+
+
 
 const useStyles = makeStyles({
   root: {
@@ -42,8 +45,9 @@ function Home() {
 
   return (
     <React.Fragment>
+
       <Container maxWidth="lg">
-          Home
+          <Typography>Home</Typography>
           <Container className={classes.header}>
           <img className={classes.image} src="http://placehold.it/1000x300"
               srcset="
@@ -53,7 +57,6 @@ function Home() {
               alt="Placeholder"
           />  
           </Container>
-        <Typography component="div" className={classes.root} />
       </Container>
     </React.Fragment>
   );
