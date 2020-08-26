@@ -63,7 +63,7 @@ function Registration(props) {
       resetForm();
       console.log("Form submitted");
       console.log("values: ", values);
-      // props.registerUser(values);
+      props.registerUser(values);
       alert(JSON.stringify(values, null, 2));
 
       /*
