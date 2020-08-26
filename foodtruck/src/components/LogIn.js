@@ -21,7 +21,6 @@ const userSchema = yup.object().shape({
 
   username: yup
     .string()
-    .username()
     .required(),
   password: yup
     .string()
