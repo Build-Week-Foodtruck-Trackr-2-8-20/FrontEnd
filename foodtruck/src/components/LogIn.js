@@ -14,14 +14,14 @@ const useStyles = makeStyles({
   });
 
 const intialState = {
-  email: "",
+  username: "",
   password: ""
 };
 const userSchema = yup.object().shape({
 
-  email: yup
+  username: yup
     .string()
-    .email()
+    .username()
     .required(),
   password: yup
     .string()
@@ -55,16 +55,16 @@ function LogIn(props) {
                 !props.isSubmitting ? (
                     <form onSubmit={props.handleSubmit} className="">
                     <Field
-                        type="email"
-                        placeholder="Enter email"
+                        type="username"
+                        placeholder="Enter username"
                         onChange={props.handleChange}
-                        name="email"
-                        value={props.values.email}
+                        name="username"
+                        value={props.values.username}
                         className="textfield"
                     />
 
-                    {props.errors.email && props.touched.email ? (
-                        <span className="textfield">{props.errors.email}</span>
+                    {props.errors.username && props.touched.username ? (
+                        <span className="textfield">{props.errors.username}</span>
                     ) : (
                         ""
                     )}
