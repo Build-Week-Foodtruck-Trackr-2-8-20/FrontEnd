@@ -9,9 +9,9 @@ import { loginUser } from "../actions/userActions";
 const useStyles = makeStyles({
   root: {
     backgroundColor: "#ddd",
-    margin: "300px auto",
+    margin: "100px auto",
     padding: "10px",
-    width: "80%",
+    width: "100%",
   },
 });
 
