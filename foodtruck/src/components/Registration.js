@@ -35,24 +35,24 @@ function Registration(props) {
   //const [value, setValue] = React.useState('diner');
   const [formState, setFormState] = useState({
     id: Date.now(),
-    userName: "",
+    username: "",
     email: "",
     password: "",
-    userType: "diner",
+    role: "diner",
   });
 
   // console.log(formState);
 
   const formik = useFormik({
     initialValues: {
-      userName: "",
+      username: "",
       email: "",
       password: "",
-      userType: 1,
+      role: 1,
     },
     validationSchema: Yup.object({
-      userType: Yup.string(),
-      userName: Yup.string()
+      role: Yup.string(),
+      username: Yup.string()
         .max(20, "Must be 20 characters or less")
         .required("Required"),
       email: Yup.string().email("Invalid email address").required("Required"),
@@ -65,48 +65,51 @@ function Registration(props) {
       console.log("values: ", values);
       // props.registerUser(values);
       alert(JSON.stringify(values, null, 2));
+
+      /*
       axios
         .post("https://reqres.in/api/users", formState) // why is this formState instead of values?
         .then((res) => {
           console.log(res.data);
           setFormState({
-            userName: "",
+            username: "",
             email: "",
             password: "",
-            userType: "diner",
+            role: "diner",
           });
         })
         .catch((err) => console.log(err.response));
+        */
     },
   });
 
   return (
     <Container className={classes.root}>
       <form onSubmit={formik.handleSubmit}>
-        <label htmlFor="userTypeInput">Username Type</label>
+        <label htmlFor="roleInput">username Type</label>
         <select
           className={classes.select}
-          name="userType"
-          id="userTypeInput"
+          name="role"
+          id="roleInput"
           onChange={formik.handleChange}
-          value={formik.values.userType}>
+          value={formik.values.role}>
           <option value="" disabled selected hidden>
             --Please choose an option--
           </option>
-          <option value="diner">Diner</option>
-          <option value="operator">Operator</option>
+          <option value="1">Diner</option>
+          <option value="2">Operator</option>
         </select>
-        <label htmlFor="userNameInput">Username</label>
+        <label htmlFor="usernameInput">username</label>
         <input
-          id="userNameInput"
-          name="userName"
+          id="usernameInput"
+          name="username"
           type="text"
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
-          value={formik.values.userName}
+          value={formik.values.username}
         />
-        {formik.touched.userName && formik.errors.userName ? (
-          <div>{formik.errors.userName}</div>
+        {formik.touched.username && formik.errors.username ? (
+          <div>{formik.errors.username}</div>
         ) : null}
         <label htmlFor="email">Email Address</label>
         <input

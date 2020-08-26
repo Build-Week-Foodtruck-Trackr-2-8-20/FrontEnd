@@ -1,4 +1,3 @@
-import ImgSlider from "./components/Carousel";
 import React from "react";
 //import ImgSlider from './Components/Carousel'
 import LogIn from "./components/LogIn";
@@ -24,9 +23,6 @@ function App() {
         <Route path="/bbq" render={() => <BBQ />} />
         <Route path="/" component={Home} />
       </Switch>
-      <div>
-        <ImgSlider />
-      </div>
       <Footer />
     </div>
   );
