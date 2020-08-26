@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import Container from "@material-ui/core/Container";
 import { makeStyles } from "@material-ui/core/styles";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import axios from "axios";
+//import axios from "axios";
 import "../App.css";
 import { connect } from "react-redux";
 // import { userActions } from "../actions/userActions";
@@ -33,13 +33,14 @@ function Registration(props) {
   console.log(props);
   const classes = useStyles();
   //const [value, setValue] = React.useState('diner');
+  /*
   const [formState, setFormState] = useState({
     id: Date.now(),
     username: "",
     email: "",
     password: "",
     role: "diner",
-  });
+  });*/
 
   // console.log(formState);
 
@@ -93,9 +94,7 @@ function Registration(props) {
           id="roleInput"
           onChange={formik.handleChange}
           value={formik.values.role}>
-          <option value="" disabled selected hidden>
-            --Please choose an option--
-          </option>
+
           <option value="1">Diner</option>
           <option value="2">Operator</option>
         </select>
