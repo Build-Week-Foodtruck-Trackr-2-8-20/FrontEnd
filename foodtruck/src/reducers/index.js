@@ -4,8 +4,11 @@ import {
 import {
   registration
 } from "./userRegisterReducer";
+import {
+  login
+} from "./userLoginReducer";
 
-const rootReducer = combineReducers({
+export const rootReducer = combineReducers({
   registration,
-  // login
+  login
 })

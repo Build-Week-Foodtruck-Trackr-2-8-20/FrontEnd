@@ -12,10 +12,10 @@ export const registration = (state = {}, action) => {
         registering: true
       };
     case REGISTER_SUCCESS:
-      console.log("success...")
+      console.log("register success...")
       return {};
     case REGISTER_FAILURE:
-      console.log("fail...")
+      console.log("register failure...")
       return {};
     default:
       return state;
