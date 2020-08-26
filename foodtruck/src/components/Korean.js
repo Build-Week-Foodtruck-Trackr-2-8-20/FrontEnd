@@ -20,6 +20,20 @@ const useStyles = makeStyles({
     width: '100%', 
     borderRadius: '0px', 
     marginTop: '0px'
+  },
+  content: {
+    display: 'flex',
+    width: "100%",
+    height: '100vh',
+    padding: '0px'
+  },
+  left: {
+    width: '50%',
+    backgroundColor: "orange"
+  }, 
+  right: {
+    width: '50%',
+    backgroundColor: "yellow"
   }
 });
 
@@ -39,7 +53,10 @@ function Korean() {
               alt="Placeholder"
           />  
           </Container>
-        <Typography component="div" className={classes.root} />
+          <Container className={classes.content}>
+          <Container className={classes.left}><Typography>Truck</Typography></Container>
+          <Container className={classes.right}><Typography>Menu</Typography></Container>
+          </Container>
       </Container>
     </React.Fragment>
   );

@@ -20,12 +20,26 @@ const useStyles = makeStyles({
     width: '100%', 
     borderRadius: '0px', 
     marginTop: '0px'
+  },
+  content: {
+    display: 'flex',
+    width: "100%",
+    height: '100vh',
+    padding: '0px'
+  },
+  left: {
+    width: '50%',
+    backgroundColor: "green"
+  }, 
+  right: {
+    width: '50%',
+    backgroundColor: "yellow"
   }
 });
 
 function Home() {
   const classes = useStyles();
-  
+
   return (
     <React.Fragment>
       <Container maxWidth="lg">
