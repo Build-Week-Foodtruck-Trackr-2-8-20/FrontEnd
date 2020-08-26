@@ -43,7 +43,7 @@ function Home() {
   return (
     <React.Fragment>
       <Container maxWidth="lg">
-          BBQ
+          Home
           <Container className={classes.header}>
           <img className={classes.image} src="http://placehold.it/1000x300"
               srcset="
