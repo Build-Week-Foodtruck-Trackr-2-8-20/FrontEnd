@@ -29,105 +29,113 @@ const useStyles = makeStyles({
   },
 });
 
-function Registration() {
-    const classes = useStyles();
-    /*
-    const [ formState, setFormState ] = useState({
-      id: Date.now(),
-      username: '',
-      email: '',
-      password: '',
-      role: 'diner'
-    })*/
+function Registration(props) {
+  console.log(props);
+  const classes = useStyles();
+  //const [value, setValue] = React.useState('diner');
+  const [formState, setFormState] = useState({
+    id: Date.now(),
+    userName: "",
+    email: "",
+    password: "",
+    userType: "diner",
+  });
 
-    const formik = useFormik({
-      initialValues: {
-        username: '',
-        email: '',
-        password: '',
-        role: 1
-      },
-      validationSchema: Yup.object({
-        role: Yup.string(),
-        username: Yup.string()
-          .max(20, 'Must be 20 characters or less')
-          .required('Required'),
-        email: Yup.string()
-          .email('Invalid email address')
-          .required('Required'),
-        password: Yup.string()
-          .required('Required')
-      }),
+  // console.log(formState);
 
-      onSubmit: (values, {resetForm} ) => {
-        resetForm();
-        console.log("Form submitted")
-        console.log(values)
-        alert(JSON.stringify(values, null, 2));
-        /*
-        axios
-        .post("https://reqres.in/api/users", formState)
+  const formik = useFormik({
+    initialValues: {
+      userName: "",
+      email: "",
+      password: "",
+      userType: 1,
+    },
+    validationSchema: Yup.object({
+      userType: Yup.string(),
+      userName: Yup.string()
+        .max(20, "Must be 20 characters or less")
+        .required("Required"),
+      email: Yup.string().email("Invalid email address").required("Required"),
+      password: Yup.string().required("Required"),
+    }),
+
+    onSubmit: (values, { resetForm }) => {
+      resetForm();
+      console.log("Form submitted");
+      console.log("values: ", values);
+      // props.registerUser(values);
+      alert(JSON.stringify(values, null, 2));
+      axios
+        .post("https://reqres.in/api/users", formState) // why is this formState instead of values?
         .then((res) => {
-            console.log(res.data)
-            setFormState({
-            username: '',
-            email: '',
-            password: '',
-            role: 'diner'
-            })
+          console.log(res.data);
+          setFormState({
+            userName: "",
+            email: "",
+            password: "",
+            userType: "diner",
+          });
         })
         .catch((err) => console.log(err.response));
-        */
-      }
-    });
+    },
+  });
 
   return (
     <Container className={classes.root}>
-     <form onSubmit={formik.handleSubmit}>
-     <label htmlFor="roleInput">username Type</label>
-     <select className={classes.select} name="role" id="roleInput" onChange={formik.handleChange} value={formik.values.role}>
-        <option value="">--Please choose an option--</option>
-        <option value="1">Diner</option>
-        <option value="2">Operator</option>
-      </select>
-       <label htmlFor="usernameInput">username</label>
-       <input
-         id="usernameInput"
-         name="username"
-         type="text"
-         onChange={formik.handleChange}
-         onBlur={formik.handleBlur}
-         value={formik.values.username}
-       />
-       {formik.touched.username && formik.errors.username ? (
-         <div>{formik.errors.username}</div>
-       ) : null}
-       <label htmlFor="email">Email Address</label>
-       <input
-         id="email"
-         name="email"
-         type="email"
-         onChange={formik.handleChange}
-         onBlur={formik.handleBlur}
-         value={formik.values.email}
-       />
-       {formik.touched.email && formik.errors.email ? (
-         <div>{formik.errors.email}</div>
-       ) : null}
-      <label htmlFor="passwordInput">Password</label>
-       <input
-         id="passwordInput"
-         name="password"
-         type="password"
-         onChange={formik.handleChange}
-         onBlur={formik.handleBlur}
-         value={formik.values.password}
-       />
-       {formik.touched.password && formik.errors.password ? (
-         <div>{formik.errors.password}</div>
-       ) : null}
-       <button className={classes.button} type="submit">Submit</button>
-     </form>
+      <form onSubmit={formik.handleSubmit}>
+        <label htmlFor="userTypeInput">Username Type</label>
+        <select
+          className={classes.select}
+          name="userType"
+          id="userTypeInput"
+          onChange={formik.handleChange}
+          value={formik.values.userType}>
+          <option value="" disabled selected hidden>
+            --Please choose an option--
+          </option>
+          <option value="diner">Diner</option>
+          <option value="operator">Operator</option>
+        </select>
+        <label htmlFor="userNameInput">Username</label>
+        <input
+          id="userNameInput"
+          name="userName"
+          type="text"
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+          value={formik.values.userName}
+        />
+        {formik.touched.userName && formik.errors.userName ? (
+          <div>{formik.errors.userName}</div>
+        ) : null}
+        <label htmlFor="email">Email Address</label>
+        <input
+          id="email"
+          name="email"
+          type="email"
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+          value={formik.values.email}
+        />
+        {formik.touched.email && formik.errors.email ? (
+          <div>{formik.errors.email}</div>
+        ) : null}
+        <label htmlFor="passwordInput">Password</label>
+        <input
+          id="passwordInput"
+          name="password"
+          type="password"
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+          value={formik.values.password}
+        />
+        {formik.touched.password && formik.errors.password ? (
+          <div>{formik.errors.password}</div>
+        ) : null}
+        <button className={classes.button} type="submit">
+          Submit
+        </button>
+      </form>
     </Container>
   );
 }
