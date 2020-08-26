@@ -3,42 +3,50 @@ import {
   REMOVE_FAVORITE,
   LOGIN,
   LOGIN_START,
+  REGISTER_START,
+  REGISTER_SUCCESS,
 } from "../actions/userActions";
 
-const initialState = [
-  {
-    isLoggingIn: false,
-    user: {
-      loggedIn: false,
-      // id: 0,
-      username: "",
-      password: "",
-      // currentLocation: "",
-      // favoriteTrucks: [],
-      // reviews: [],
-    },
-    operators: [
-      {
-        id: 0,
-        username: "",
-        password: "",
-        trucksOwned: [
-          {
-            imageOfTruck: "",
-            cuisineType: "",
-            customerRatings: [],
-            customerRatingAvg: 0,
-            //will backend calculate avg customer rating?
-            // customerRatingAvg: initialState.operators.trucksOwned.customerRatings.length < 1 ? "No reviews" : initialState.operators.trucksOwned.customerRatings.reduce((a, b) => a + b) / initialState.operators.trucksOwned.customerRatings.length
-          },
-        ],
-      },
-    ],
+const initialState = [{
+  isRegistering: false,
+  isLoggingIn: false,
+  user: {
+    loggedIn: false,
+    // id: 0,
+    username: "",
+    password: "",
+    // currentLocation: "",
+    // favoriteTrucks: [],
+    // reviews: [],
   },
-];
+  operators: [{
+    id: 0,
+    username: "",
+    password: "",
+    trucksOwned: [{
+      imageOfTruck: "",
+      cuisineType: "",
+      customerRatings: [],
+      customerRatingAvg: 0,
+      //will backend calculate avg customer rating?
+      // customerRatingAvg: initialState.operators.trucksOwned.customerRatings.length < 1 ? "No reviews" : initialState.operators.trucksOwned.customerRatings.reduce((a, b) => a + b) / initialState.operators.trucksOwned.customerRatings.length
+    }, ],
+  }, ],
+}, ];
 
 export const foodTruckReducer = (state = initialState, action) => {
   switch (action.type) {
+    case REGISTER_START: {
+      return {
+        isRegistering: true,
+        ...state
+      }
+    }
+    case REGISTER_SUCCESS: {
+      return {
+        isRegistering: false,
+      }
+    }
     case LOGIN_START: {
       return {
         isLoggingIn: true,
