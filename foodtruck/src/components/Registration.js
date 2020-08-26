@@ -1,29 +1,32 @@
-import React, { useState } from 'react';
-import Container from '@material-ui/core/Container';
-import { makeStyles } from '@material-ui/core/styles';
-import { useFormik } from 'formik';
-import * as Yup from 'yup';
+import React, { useState } from "react";
+import Container from "@material-ui/core/Container";
+import { makeStyles } from "@material-ui/core/styles";
+import { useFormik } from "formik";
+import * as Yup from "yup";
 import axios from "axios";
-import '../App.css';
+import "../App.css";
+import { connect } from "react-redux";
+// import { userActions } from "../actions/userActions";
+import { registerUser } from "../actions/userActions";
 
 const useStyles = makeStyles({
   root: {
-    backgroundColor: '#ddd',
-    margin: '200px auto',
-    padding: '10px',
-    width: '80%'
+    backgroundColor: "#ddd",
+    margin: "200px auto",
+    padding: "10px",
+    width: "80%",
   },
   input: {
-      margin: '10px',
-      position: 'relative'
+    margin: "10px",
+    position: "relative",
   },
   select: {
-    height: '50px',
-    width: '100%'
+    height: "50px",
+    width: "100%",
   },
   button: {
-    margin: '5px 0'
-  }
+    margin: "5px 0",
+  },
 });
 
 function Registration() {
@@ -129,4 +132,11 @@ function Registration() {
   );
 }
 
-export default Registration;
+const mapStateToProps = (state) => {
+  console.log(state);
+  return {
+    state,
+  };
+};
+
+export default connect(mapStateToProps, { registerUser })(Registration);
