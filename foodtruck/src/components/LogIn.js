@@ -16,9 +16,10 @@ const useStyles = makeStyles({
 });
 
 const intialState = {
-  email: "",
-  password: "",
+  username: "",
+  password: ""
 };
+
 const userSchema = yup.object().shape({
   email: yup.string().email().required(),
   password: yup.string().required().max(13).min(8),
@@ -29,6 +30,7 @@ function LogIn(props) {
   const classes = useStyles();
   console.log(user);
   return (
+ 
     <Container className={classes.root}>
       <div className="loginForm">
         <Fragment>
