@@ -49,7 +49,8 @@ export const loginUser = (loginObj) => (dispatch) => {
     .then((res) => {
       console.log(res.data);
       dispatch({
-        type: LOGIN_SUCCESS
+        type: LOGIN_SUCCESS,
+        payload: loginObj
       })
       // localStorage.setItem("authToken", res.data.payload);
       // history.push("/");
