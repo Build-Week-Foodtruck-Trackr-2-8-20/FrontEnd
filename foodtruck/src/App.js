@@ -41,6 +41,11 @@ function App() {
         <Route path="/bbq" render={() => <BBQ truckMenu={trucks} />} />
         <Route path="/" component={Home} />
       </Switch>
+
+      <div>
+       
+      </div>
+
       <Footer />
     </div>
   );
