@@ -53,7 +53,9 @@ function Home() {
               alt="Placeholder"
           />  
           </Container>
-        <Typography component="div" className={classes.root} />
+        <Typography component="div" className={classes.root}>
+          <Typography>Home</Typography>
+        </Typography>
       </Container>
     </React.Fragment>
   );

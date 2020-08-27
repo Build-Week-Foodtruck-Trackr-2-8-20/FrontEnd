@@ -37,8 +37,10 @@ const useStyles = makeStyles({
   }
 });
 
-function BBQ() {
+function BBQ(props) {
   const classes = useStyles();
+  const { truckMenu } = props;
+  console.log(truckMenu)
 
   return (
     <React.Fragment>
