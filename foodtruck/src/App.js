@@ -12,6 +12,9 @@ import Home from "./components/Home";
 import "./App.css";
 import axios from 'axios';
 
+
+
+
 function App() {
   const [trucks, setTrucks] = useState([]);
 
@@ -42,9 +45,15 @@ function App() {
         <Route path="/" component={Home} />
       </Switch>
 
+<<<<<<< HEAD
       <div></div>
 
+=======
+      <footer >
+>>>>>>> 6e50b2ee5bc081c917091fcc59c0e2ad717251f0
       <Footer />
+      </footer>
+      
     </div>
   );
 }

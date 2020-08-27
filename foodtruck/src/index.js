@@ -24,3 +24,12 @@ ReactDOM.render(
   </Provider>,
   document.getElementById("root")
 );
+
+// const allStuff = document.querySelector('img')
+//    allStuff.addEventListener("mouseenter", event => {
+//     allStuff.style.transform = "scale(1.1)";
+//   });
+
+//   allStuff.addEventListener("mouseleave", event => {
+//     allStuff.style.transform = "scale(1)";
+//   });
