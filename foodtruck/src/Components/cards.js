@@ -7,10 +7,10 @@ import {
 const Cards = (props) => {
 
     const cardInfo = [
-        { image:"https://cdn.pixabay.com/photo/2019/10/10/19/40/tacos-4540402_960_720.jpg", title: " Savory Tacos ", text:" State of the are Tacos" },
-        { image:"https://cdn.pixabay.com/photo/2016/08/10/10/27/pork-1582916_960_720.jpg", title: " Delicious Korean Food ", text:" Korean Yum yums " },
-        { image:"https://cdn.pixabay.com/photo/2016/03/05/20/07/abstract-1238657_960_720.jpg", title: " Sweet Savory Bbq ", text:" Saucy Saucy " },
-        { image:"https://cdn.pixabay.com/photo/2017/03/23/15/48/buffet-2168675_960_720.jpg", title: " More Savory Delicious Sweet Food ", text:" What you want is out there!! " },
+        { image:"https://cdn.pixabay.com/photo/2019/10/10/19/40/tacos-4540402_960_720.jpg", title: " Savory Tacos ", text:" State of the are Tacos", link: "/tacos" },
+        { image:"https://cdn.pixabay.com/photo/2016/08/10/10/27/pork-1582916_960_720.jpg", title: " Delicious Korean Food ", text:" Korean Yum yums ", link: "/korean" },
+        { image:"https://cdn.pixabay.com/photo/2016/03/05/20/07/abstract-1238657_960_720.jpg", title: " Sweet Savory Bbq ", text:" Saucy Saucy ",link: "/bbq" },
+        { image:"https://cdn.pixabay.com/photo/2017/03/23/15/48/buffet-2168675_960_720.jpg", title: " More Savory Delicious Sweet Food ", text:" What you want is out there!! ", link: "/" },
 
     ]
 
@@ -22,7 +22,7 @@ const Cards = (props) => {
             <CardBody>
               <CardTitle>{card.title}</CardTitle>
               <CardText>{card.text}</CardText>
-              <Button className="cardButton"> Order Now </Button>
+              <Button className="cardButton" href={card.link} > Order Now </Button>
             </CardBody>
           </Card>
 
