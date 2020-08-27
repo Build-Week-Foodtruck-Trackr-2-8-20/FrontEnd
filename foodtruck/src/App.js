@@ -12,6 +12,9 @@ import Tacos from "./components/Tacos";
 import Home from "./components/Home";
 import "./App.css";
 
+
+
+
 function App() {
   return (
     <div className="App">
@@ -24,10 +27,10 @@ function App() {
         <Route path="/bbq" render={() => <BBQ />} />
         <Route path="/" component={Home} />
       </Switch>
-      <div>
-       
-      </div>
+      <footer >
       <Footer />
+      </footer>
+      
     </div>
   );
 }

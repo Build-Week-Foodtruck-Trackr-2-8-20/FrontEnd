@@ -3,17 +3,16 @@ import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import '../App.css';
 import  ImgSlider from "./Carousel"
-
+import Cards from "./cards"
 
 
 function Home() {
   return (
-    <React.Fragment>
-      <Container maxWidth="lg" component="div" style={{ backgroundColor: '#eee', height: '100vh' }}>
-        <Typography>Home</Typography>
+      <div className="homeContainer">
         <ImgSlider/>
-      </Container>
-    </React.Fragment>
+        <Cards/>
+      </div>
+    
   );
 }
 
