@@ -11,16 +11,18 @@ import Tacos from "./components/Tacos";
 import Home from "./components/Home";
 import "./App.css";
 import axios from 'axios';
+import { useParams } from 'react-router-dom';
 
 function App() {
   const [trucks, setTrucks] = useState([]);
+  const params = useParams();
 
   useEffect(() => {
+    const id = params.id;
     const getTrucks = () => {
       axios
-        .get('http://food-truck-lambda.herokuapp.com/api/trucks')
+        .get(`http://food-truck-lambda.herokuapp.com/api/trucks/`)
         .then(response => {
-          console.log(response);
           setTrucks(response.data);
         })
         .catch(error => {
@@ -34,11 +36,11 @@ function App() {
     <div className="App">
       <Header />
       <Switch>
-        <Route path="/tacos" render={() => <Tacos truckMenu={trucks} />} />
+        <Route path="/tacos" render={() => <Tacos truckMenus={trucks} />} />
         <Route path="/registration" render={() => <Registration />} />
         <Route path="/login" render={() => <LogIn />} />
-        <Route path="/korean" render={() => <Korean truckMenu={trucks} />} />
-        <Route path="/bbq" render={() => <BBQ truckMenu={trucks} />} />
+        <Route path="/korean" render={() => <Korean truckMenus={trucks} />} />
+        <Route path="/bbq" render={() => <BBQ truckMenus={trucks} />} />
         <Route path="/" component={Home} />
       </Switch>
 
