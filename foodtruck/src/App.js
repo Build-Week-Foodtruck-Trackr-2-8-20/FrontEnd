@@ -46,15 +46,7 @@ function App() {
         <Route path="/bbq" render={() => <BBQ truckMenus={trucks} />} />
         <Route path="/" component={Home} />
       </Switch>
-
-<<<<<<< HEAD
-      <div></div>
-
-=======
-      <footer >
->>>>>>> 6e50b2ee5bc081c917091fcc59c0e2ad717251f0
       <Footer />
-      </footer>
       
     </div>
   );

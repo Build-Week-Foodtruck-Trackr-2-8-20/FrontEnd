@@ -19,7 +19,8 @@ const useStyles = makeStyles({
   image: {
     width: '100%', 
     borderRadius: '0px', 
-    marginTop: '0px'
+    marginTop: '0px',
+    marginBottom: '0px'
   },
   content: {
     display: 'flex',
