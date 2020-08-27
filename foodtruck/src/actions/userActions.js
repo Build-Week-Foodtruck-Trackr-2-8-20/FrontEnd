@@ -12,6 +12,8 @@ export const REGISTER_SUCCESS = "REGISTER_SUCCESS";
 export const REGISTER_FAILURE = "REGISTER_FAILURE";
 export const LOGIN_START = "LOGIN_START";
 export const LOGIN_SUCCESS = "LOGIN";
+export const LOGIN_USER_SUCCESS = "LOGIN_USER_SUCCESS";
+export const LOGIN_OPERATOR_SUCCESS = "LOGIN_OPERATOR_SUCCESS";
 export const LOGIN_FAILURE = "LOGIN_FAILURE";
 export const ADD_GPS_LOCATION = "ADD_GPS_LOCATION";
 export const ADD_MANUAL_LOCATION = "ADD_MANUAL_LOCATION";
@@ -55,8 +57,16 @@ export const loginUser = (loginObj) => (dispatch) => {
       console.log(res.data);
       dispatch({
         type: LOGIN_SUCCESS,
-        payload: res.data
       })
+      res.data.role === 1 ?
+        dispatch({
+          type: LOGIN_USER_SUCCESS,
+          payload: res.data
+        }) :
+        dispatch({
+          type: LOGIN_OPERATOR_SUCCESS,
+          payload: res.data
+        })
       localStorage.setItem("authToken", res.data.token);
       // history.location.pathname = "/home";
       // history.push("/");

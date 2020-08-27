@@ -36,11 +36,11 @@ function LogIn(props) {
           <Formik
             initialValues={user}
             onSubmit={(values, actions) => {
-              actions.setSubmitting(props.login.loggingIn);
+              console.log(props.login.loggingIn);
+              actions.setSubmitting(true);
               console.log(values);
               props.loginUser(values);
               setTimeout(() => {
-                console.log(props.login.loggingIn);
                 // some experimentation --> trying to get the redirect to work
                 // console.log(props.login.loggedIn);
                 // if (props.login.loggedIn) {
@@ -50,9 +50,6 @@ function LogIn(props) {
                 history.push("/");
                 actions.setSubmitting(props.login.loggingIn);
               }, 1000);
-              // if (props.login.loggedIn) {
-              //   history.push("/");
-              // }
             }}
             validationSchema={userSchema}>
             {(props) =>
@@ -106,16 +103,6 @@ function LogIn(props) {
   );
 }
 
-// const mapStateToProps = (state) => {
-//   console.log("logged in", state);
-//   return {
-//     loggedIn: state.loggedIn,
-//     id: state.id,
-//     username: state.username,
-//     email: state.email,
-//     role: state.role,
-//   };
-// };
 const mapStateToProps = (state) => {
   console.log(state);
   return {

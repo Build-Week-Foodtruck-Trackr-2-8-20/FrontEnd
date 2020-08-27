@@ -8,11 +8,11 @@ import {
   login
 } from "./login";
 import {
-  user
-} from "./user";
+  diner
+} from "./diner";
 
 export const rootReducer = combineReducers({
   registration,
   login,
-  user
+  diner
 })
