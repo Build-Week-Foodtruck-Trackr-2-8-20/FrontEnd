@@ -1,6 +1,6 @@
 import React, { useState, useEffect }  from "react";
 //import ImgSlider from './Components/Carousel'
-import LogIn from "./components/LogIn";
+import LogIn from "./components/Login";
 import Registration from "./components/Registration";
 import { Route, Switch } from "react-router-dom";
 import Header from "./components/Header";

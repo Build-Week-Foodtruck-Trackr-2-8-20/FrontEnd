@@ -7,15 +7,15 @@ import "./index.css";
 import App from "./App";
 import { createStore, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
-// import { foodTruckReducer } from "./reducers/foodTruckReducer";
+ //import { foodTruckReducer } from "./reducers/foodTruckReducer";
 // import { registration } from "./reducers/userRegisterReducer";
 import thunk from "redux-thunk";
 import { rootReducer } from "./reducers/index";
 
-const store = createStore(rootReducer, applyMiddleware(thunk));
+ const store = createStore(rootReducer, applyMiddleware(thunk));
 
 ReactDOM.render(
-  <Provider store={store}>
+   <Provider store={store}>
     <Router>
       <App />
     </Router>
