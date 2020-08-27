@@ -1,15 +1,18 @@
 import React from "react";
 //import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import ReactDOM from "react-dom";
 import { BrowserRouter as Router } from "react-router-dom";
 import "./index.css";
 import App from "./App";
-import { createStore } from "redux";
+import { createStore, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
-import { foodTruckReducer } from "./reducer/foodTruckReducer";
+// import { foodTruckReducer } from "./reducers/foodTruckReducer";
+// import { registration } from "./reducers/userRegisterReducer";
+import thunk from "redux-thunk";
+import { rootReducer } from "./reducers/index";
 
-const store = createStore(foodTruckReducer); // do we want to use middleware?
-
+const store = createStore(rootReducer, applyMiddleware(thunk));
 
 ReactDOM.render(
   <Provider store={store}>
