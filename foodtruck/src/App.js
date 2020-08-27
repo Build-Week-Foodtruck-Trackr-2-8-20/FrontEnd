@@ -19,8 +19,13 @@ function App() {
   useEffect(() => {
     const getTrucks = () => {
       axios
+<<<<<<< HEAD
         .get("http://food-truck-lambda.herokuapp.com/api/trucks")
         .then((response) => {
+=======
+        .get(`http://food-truck-lambda.herokuapp.com/api/trucks?id=2`)
+        .then(response => {
+>>>>>>> a6be1502529d1a2123ae581ce0ce13ba7800a6d2
           console.log(response);
           setTrucks(response.data);
         })
@@ -35,6 +40,7 @@ function App() {
     <div className="App">
       <Header />
       <Switch>
+<<<<<<< HEAD
         <PrivateRoute exact path="/" component={Home} />
         <Route exact path="/registration" component={Registration} />
         <Route exact path="/login" component={LogIn} />
@@ -63,6 +69,17 @@ function App() {
       <footer>
         <Footer />
       </footer>
+=======
+        <Route path="/tacos" render={() => <Tacos truckMenus={trucks} />} />
+        <Route path="/registration" render={() => <Registration />} />
+        <Route path="/login" render={() => <LogIn />} />
+        <Route path="/korean" render={() => <Korean truckMenus={trucks} />} />
+        <Route path="/bbq" render={() => <BBQ truckMenus={trucks} />} />
+        <Route path="/" component={Home} />
+      </Switch>
+      <Footer />
+      
+>>>>>>> a6be1502529d1a2123ae581ce0ce13ba7800a6d2
     </div>
   );
 }

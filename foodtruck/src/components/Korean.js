@@ -19,7 +19,8 @@ const useStyles = makeStyles({
   image: {
     width: '100%', 
     borderRadius: '0px', 
-    marginTop: '0px'
+    marginTop: '0px',
+    marginBottom: '0px'
   },
   content: {
     display: 'flex',
@@ -37,8 +38,10 @@ const useStyles = makeStyles({
   }
 });
 
-function Korean() {
+function Korean(props) {
   const classes = useStyles();
+  const { truckMenus } = props;
+  console.log(props)
 
   return (
     <React.Fragment>
@@ -46,15 +49,25 @@ function Korean() {
           BBQ
           <Container className={classes.header}>
           <img className={classes.image} src="http://placehold.it/1000x300"
-              srcset="
-                http://placehold.it/1000x300 300w"
-              sizes="
-                100vw"
               alt="Placeholder"
           />  
           </Container>
           <Container className={classes.content}>
-          <Container className={classes.left}><Typography>Truck</Typography></Container>
+          <Container className={classes.left}>
+            <Typography>Truck</Typography>
+            {truckMenus.map(truckMenu => (
+                <div key={truckMenu.id}>
+                  <p>Cuisine</p>
+                  <div>{truckMenu.cuisineType}</div>
+                  <p>Departure Time</p>
+                  <div>{truckMenu.departureTime}</div>
+                  <p>Rating</p>
+                  <div>{truckMenu.customerRatingAvg} stars</div>
+                  <p>Location</p>
+                  <div>{truckMenu.location} stars</div>
+                </div>
+            ))}
+          </Container>
           <Container className={classes.right}><Typography>Menu</Typography></Container>
           </Container>
       </Container>
