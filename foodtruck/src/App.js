@@ -1,4 +1,4 @@
-import React, { useState, useEffect }  from "react";
+import React, { useState, useEffect } from "react";
 //import ImgSlider from './Components/Carousel'
 import LogIn from "./components/LogIn";
 import Registration from "./components/Registration";
@@ -10,10 +10,8 @@ import BBQ from "./components/BBQ";
 import Tacos from "./components/Tacos";
 import Home from "./components/Home";
 import "./App.css";
-import axios from 'axios';
-
-
-
+import axios from "axios";
+import PrivateRoute from "./components/privateRoute";
 
 function App() {
   const [trucks, setTrucks] = useState([]);
@@ -21,15 +19,15 @@ function App() {
   useEffect(() => {
     const getTrucks = () => {
       axios
-        .get('http://food-truck-lambda.herokuapp.com/api/trucks')
-        .then(response => {
+        .get("http://food-truck-lambda.herokuapp.com/api/trucks")
+        .then((response) => {
           console.log(response);
           setTrucks(response.data);
         })
-        .catch(error => {
-          console.error('Server Error', error);
+        .catch((error) => {
+          console.error("Server Error", error);
         });
-    }
+    };
     getTrucks();
   }, []);
 
@@ -37,23 +35,34 @@ function App() {
     <div className="App">
       <Header />
       <Switch>
-        <Route path="/tacos" render={() => <Tacos truckMenu={trucks} />} />
-        <Route path="/registration" render={() => <Registration />} />
-        <Route path="/login" render={() => <LogIn />} />
-        <Route path="/korean" render={() => <Korean truckMenu={trucks} />} />
-        <Route path="/bbq" render={() => <BBQ truckMenu={trucks} />} />
-        <Route path="/" component={Home} />
+        <PrivateRoute exact path="/" component={Home} />
+        <Route exact path="/registration" component={Registration} />
+        <Route exact path="/login" component={LogIn} />
+        <Route exact path="/tacos" component={Tacos} />
+        <Route exact path="/korean" component={Korean} />
+        <Route exact path="/bbq" component={BBQ} />
+        {/* <Route exact path="/home" component={Home} /> */}
       </Switch>
+      {/* <Switch>
+        <Route
+          exact
+          path="/tacos"
+          render={() => <Tacos truckMenu={trucks} />}
+        />
+        <Route exact path="/registration" render={() => <Registration />} />
+        <Route exact path="/login" render={() => <LogIn />} />
+        <Route
+          exact
+          path="/korean"
+          render={() => <Korean truckMenu={trucks} />}
+        />
+        <Route exact path="/bbq" render={() => <BBQ truckMenu={trucks} />} />
+        <Route exact path="/home" component={Home} />
+      </Switch> */}
 
-<<<<<<< HEAD
-      <div></div>
-
-=======
-      <footer >
->>>>>>> 6e50b2ee5bc081c917091fcc59c0e2ad717251f0
-      <Footer />
+      <footer>
+        <Footer />
       </footer>
-      
     </div>
   );
 }

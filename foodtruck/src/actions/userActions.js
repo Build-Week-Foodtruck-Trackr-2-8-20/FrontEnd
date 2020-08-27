@@ -1,7 +1,10 @@
 import axios from "axios";
-import axiosWithAuth from "../components/axiosWithAuth";
+import {
+  axiosWithAuth
+} from "../components/axiosWithAuth";
 import {
   createBrowserHistory
+  // useHistory
 } from "history";
 
 export const REGISTER_START = "REGISTER_START";
@@ -13,11 +16,9 @@ export const LOGIN_FAILURE = "LOGIN_FAILURE";
 export const ADD_FAVORITE = "ADD_FAVORITE";
 export const REMOVE_FAVORITE = "REMOVE_FAVORITE";
 
-
+// const history = useHistory();
 const history = createBrowserHistory();
 
-
-// registerObj = { username: "username", email: "email", password: "password", role: "diner/operator", location: "location", locationGPS: "locationGPS" }
 export const registerUser = (registerObj) => (dispatch) => {
   // const history = useHistory();
   console.log("userActions.js: registerUser: registerObj: ", registerObj);
@@ -28,22 +29,19 @@ export const registerUser = (registerObj) => (dispatch) => {
     .post("https://food-truck-lambda.herokuapp.com/api/auth/register", registerObj)
     .then((res) => {
       console.log(res.data);
-      // history.push("/login")
       dispatch({
         type: REGISTER_SUCCESS
       })
-      // history.push("/login"); // -> need to figure out why this won't work
+      history.push("/login"); // -> need to figure out why this won't work
     })
     .catch((err) => {
       console.log(err);
-      // history.push("/login")
       dispatch({
         type: REGISTER_FAILURE
       })
     });
 };
 
-// loginObj = { username: "username", password: "password" }
 export const loginUser = (loginObj) => (dispatch) => {
   dispatch({
     type: LOGIN_START,
@@ -55,9 +53,10 @@ export const loginUser = (loginObj) => (dispatch) => {
       console.log(res.data);
       dispatch({
         type: LOGIN_SUCCESS,
-        payload: loginObj
+        payload: res.data
       })
       localStorage.setItem("authToken", res.data.token);
+      // history.location.pathname = "/home";
       history.push("/");
     })
     .catch((err) => {

@@ -4,8 +4,15 @@ import {
   LOGIN_FAILURE,
 } from "../actions/userActions";
 
+const initialState = {
+  loggedIn: false,
+  id: "",
+  username: "",
+  email: "",
+  role: ""
+}
 
-export const login = (state = {}, action) => {
+export const login = (state = initialState, action) => {
   switch (action.type) {
     case LOGIN_START:
       console.log("logging in...");
@@ -15,9 +22,13 @@ export const login = (state = {}, action) => {
       };
     case LOGIN_SUCCESS:
       console.log("login success...");
+      console.log("login success", action.payload)
       return {
         loggedIn: true,
-          user: action.payload,
+          id: action.payload.id,
+          username: action.payload.username,
+          email: action.payload.email,
+          role: action.payload.role,
       };
     case LOGIN_FAILURE:
       console.log("login failure...");

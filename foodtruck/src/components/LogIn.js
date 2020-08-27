@@ -5,6 +5,8 @@ import { Formik, Field } from "formik";
 import * as yup from "yup";
 import { connect } from "react-redux";
 import { loginUser } from "../actions/userActions";
+import axios from "axios";
+import AxiosWithAuth from "./axiosWithAuth";
 
 const useStyles = makeStyles({
   root: {
@@ -20,13 +22,14 @@ const intialState = {
   password: "",
 };
 const userSchema = yup.object().shape({
-<<<<<<< HEAD
   username: yup.string().required(),
-=======
-    username: yup.string().required(),
->>>>>>> 28779ae86db2824e4a31bd6a9aca41d351cb14f3
   password: yup.string().required().max(13).min(8),
 });
+
+axios
+  .get("https://food-truck-lambda.herokuapp.com/api/trucks")
+  .then((res) => console.log("trucks", res))
+  .catch((err) => console.log(err));
 
 function LogIn(props) {
   const [user, setUser] = useState(intialState);
@@ -98,6 +101,7 @@ function LogIn(props) {
 }
 
 const mapStateToProps = (state) => {
+  console.log(state);
   return {
     state,
   };
