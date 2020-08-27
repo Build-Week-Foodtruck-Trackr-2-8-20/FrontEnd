@@ -47,11 +47,12 @@ function LogIn(props) {
                 //   history.push("/");
                 // }
                 //this one works!
-                history.push("/");
                 actions.setSubmitting(props.login.loggingIn);
+                history.push("/");
               }, 1000);
             }}
             validationSchema={userSchema}>
+            {" "}
             {(props) =>
               !props.isSubmitting ? (
                 <form onSubmit={props.handleSubmit} className="">
@@ -63,13 +64,11 @@ function LogIn(props) {
                     value={props.values.username}
                     className="textfield"
                   />
-
                   {props.errors.username && props.touched.username ? (
-                    <span className="textfield">{props.errors.username}</span>
+                    <span className="textfield"> {props.errors.username} </span>
                   ) : (
                     ""
                   )}
-
                   <Field
                     type="password"
                     onChange={props.handleChange}
@@ -78,27 +77,25 @@ function LogIn(props) {
                     placeholder="Password"
                     className="textfield"
                   />
-
                   {props.errors.password && props.touched.password ? (
-                    <span className="fieldtext">{props.errors.password}</span>
+                    <span className="fieldtext"> {props.errors.password} </span>
                   ) : (
                     ""
                   )}
-
                   <button
                     type="submit"
                     disabled={!props.dirty && props.isSubmitting}
                     className="submitButton">
-                    Login
-                  </button>
+                    Login{" "}
+                  </button>{" "}
                 </form>
               ) : (
-                <span className="user">{JSON.stringify(user, null, 2)}</span>
+                <span className="user"> {JSON.stringify(user, null, 2)} </span>
               )
-            }
-          </Formik>
-        </Fragment>
-      </div>
+            }{" "}
+          </Formik>{" "}
+        </Fragment>{" "}
+      </div>{" "}
     </Container>
   );
 }
@@ -113,4 +110,6 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, { loginUser })(LogIn);
+export default connect(mapStateToProps, {
+  loginUser,
+})(LogIn);

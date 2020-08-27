@@ -41,14 +41,14 @@ export const diner = (state = initialState, action) => {
         ...state,
         favorites: [
           ...state.favorites,
-          action.payload
+          action.payload //truck ID
         ]
       };
     case REMOVE_FAVORITE:
       return {
         ...state,
         favorites: [
-          state.favorites.filter(favorite => favorite.id !== action.payload)
+          state.favorites.filter(favorite => !action.payload)
         ]
       };
     default:

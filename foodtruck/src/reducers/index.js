@@ -10,9 +10,17 @@ import {
 import {
   diner
 } from "./diner";
+import {
+  operator
+} from "./operator";
+import {
+  trucks
+} from "./trucks";
 
 export const rootReducer = combineReducers({
   registration,
   login,
-  diner
+  diner,
+  operator,
+  trucks
 })

@@ -8,7 +8,7 @@ const initialState = {
   trucksOwned: [] // array of IDs?
 }
 
-export const operators = (state = {}, action) => {
+export const operator = (state = initialState, action) => {
   switch (action.type) {
     default:
       return state

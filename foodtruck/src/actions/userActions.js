@@ -2,10 +2,6 @@ import axios from "axios";
 import {
   axiosWithAuth
 } from "../components/axiosWithAuth";
-import {
-  createBrowserHistory
-  // useHistory
-} from "history";
 
 export const REGISTER_START = "REGISTER_START";
 export const REGISTER_SUCCESS = "REGISTER_SUCCESS";
@@ -20,11 +16,7 @@ export const ADD_MANUAL_LOCATION = "ADD_MANUAL_LOCATION";
 export const ADD_FAVORITE = "ADD_FAVORITE";
 export const REMOVE_FAVORITE = "REMOVE_FAVORITE";
 
-// const history = useHistory();
-const history = createBrowserHistory();
-
 export const registerUser = (registerObj) => (dispatch) => {
-  // const history = useHistory();
   console.log("userActions.js: registerUser: registerObj: ", registerObj);
   dispatch({
     type: REGISTER_START,
@@ -36,7 +28,6 @@ export const registerUser = (registerObj) => (dispatch) => {
       dispatch({
         type: REGISTER_SUCCESS
       })
-      // history.push("/login"); // -> need to figure out why this won't work
     })
     .catch((err) => {
       console.log(err);
@@ -68,8 +59,6 @@ export const loginUser = (loginObj) => (dispatch) => {
           payload: res.data
         })
       localStorage.setItem("authToken", res.data.token);
-      // history.location.pathname = "/home";
-      // history.push("/");
     })
     .catch((err) => {
       console.log(err)
@@ -79,24 +68,36 @@ export const loginUser = (loginObj) => (dispatch) => {
     });
 };
 
-// seller ID?
-export const addFavorite = (seller) => {
-  return {
-    type: ADD_FAVORITE,
-    payload: seller,
-  };
+// export const addTruck = (truckObj) => (dispatch) => {
+
+// }
+
+// dinerTruckIDsObj = {userid: 3, truckid: 2}
+export const addFavorite = (dinerTruckIDsObj) => (dispatch) => {
+  axiosWithAuth()
+    .post("https://food-truck-lambda.herokuapp.com/api/diners/addfavtruck", dinerTruckIDsObj)
+    .then((res) => {
+      dispatch({
+        type: ADD_FAVORITE,
+        payload: res.data
+      })
+    })
+    .catch(err => {
+      console.log(err)
+    })
 };
 
-// seller ID since we will be passing that to the delete call?
-export const removeFavorite = (sellerId) => {
-  return {
-    type: REMOVE_FAVORITE,
-    payload: sellerId,
-  };
-};
-
-// user must be able to do the following:
-// ADD FAVORITE, DELETE FAVORITE, ADD REVIEW, DELETE REVIEW
-
-// seller must be able to do the following:
-// CREATE TRUCK, VIEW TRUCK, UPDATE TRUCK, DELETE TRUCK
+// dinerTruckIDsObj = {userid: 3, truckid: 2}
+export const removeFavorite = (dinerTruckIDsObj) => (dispatch) => {
+  axiosWithAuth()
+    .post("https://food-truck-lambda.herokuapp.com/api/diners/removefavtruck", dinerTruckIDsObj)
+    .then((res) => {
+      dispatch({
+        type: REMOVE_FAVORITE,
+        payload: res.data
+      })
+    })
+    .catch((err) => {
+      console.log(err)
+    })
+}

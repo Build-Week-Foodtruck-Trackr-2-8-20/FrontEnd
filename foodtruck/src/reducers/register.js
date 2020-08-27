@@ -4,6 +4,8 @@ import {
   REGISTER_FAILURE
 } from "../actions/userActions";
 
+// could we add so that it automatically logs users in when they register?
+
 export const registration = (state = {}, action) => {
   switch (action.type) {
     case REGISTER_START:

@@ -10,7 +10,7 @@ const initialState = [{
   dinerRatingsArray: []
 }]
 
-export const trucks = (state = {}, action) => {
+export const trucks = (state = initialState, action) => {
   switch (action.type) {
     default:
       return state

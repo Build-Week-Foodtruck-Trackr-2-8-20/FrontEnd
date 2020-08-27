@@ -62,4 +62,12 @@ function Home() {
   );
 }
 
+const mapStateToProps = (state) => {
+  console.log(state);
+  return {
+    state,
+  };
+};
+
+// export default connect(mapStateToProps, {})(Home);
 export default Home;
