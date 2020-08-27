@@ -3,9 +3,8 @@ import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import { makeStyles } from "@material-ui/core/styles";
 import '../App.css';
-//import  ImgSlider from "./Carousel"
-
-
+import  ImgSlider from "./Carousel"
+import Cards from "./cards"
 
 const useStyles = makeStyles({
   root: {
@@ -44,7 +43,6 @@ function Home() {
   const classes = useStyles();
 
   return (
-    <React.Fragment>
 
       <Container maxWidth="lg">
           <Typography>Home</Typography>

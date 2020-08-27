@@ -13,6 +13,9 @@ import "./App.css";
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 
+
+
+
 function App() {
   const [trucks, setTrucks] = useState([]);
   const params = useParams();
@@ -44,11 +47,15 @@ function App() {
         <Route path="/" component={Home} />
       </Switch>
 
-      <div>
-       
-      </div>
+<<<<<<< HEAD
+      <div></div>
 
+=======
+      <footer >
+>>>>>>> 6e50b2ee5bc081c917091fcc59c0e2ad717251f0
       <Footer />
+      </footer>
+      
     </div>
   );
 }

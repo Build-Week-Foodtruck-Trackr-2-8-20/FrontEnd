@@ -72,6 +72,6 @@ const items = [
    ]
       </Carousel>
     );
-  }
+  };
   
   export default ImgSlider;
