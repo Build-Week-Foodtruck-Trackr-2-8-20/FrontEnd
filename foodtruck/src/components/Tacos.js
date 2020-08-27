@@ -48,10 +48,6 @@ function Tacos(props) {
           BBQ
           <Container className={classes.header}>
           <img className={classes.image} src="http://placehold.it/1000x300"
-              srcset="
-                http://placehold.it/1000x300 300w"
-              sizes="
-                100vw"
               alt="Placeholder"
           />  
           </Container>

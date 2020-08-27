@@ -11,21 +11,19 @@ import Tacos from "./components/Tacos";
 import Home from "./components/Home";
 import "./App.css";
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
 
 
 
 
 function App() {
   const [trucks, setTrucks] = useState([]);
-  const params = useParams();
 
   useEffect(() => {
-    const id = params.id;
     const getTrucks = () => {
       axios
-        .get(`http://food-truck-lambda.herokuapp.com/api/trucks/`)
+        .get(`http://food-truck-lambda.herokuapp.com/api/trucks?id=2`)
         .then(response => {
+          console.log(response);
           setTrucks(response.data);
         })
         .catch(error => {

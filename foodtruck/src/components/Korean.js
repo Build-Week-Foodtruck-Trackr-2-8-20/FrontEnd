@@ -41,6 +41,7 @@ const useStyles = makeStyles({
 function Korean(props) {
   const classes = useStyles();
   const { truckMenus } = props;
+  console.log(props)
 
   return (
     <React.Fragment>
