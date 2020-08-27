@@ -37,8 +37,9 @@ const useStyles = makeStyles({
   }
 });
 
-function Tacos() {
+function Tacos(props) {
   const classes = useStyles();
+  const { truckMenus } = props;
 
   return (
     <React.Fragment>
@@ -54,7 +55,21 @@ function Tacos() {
           />  
           </Container>
           <Container className={classes.content}>
-          <Container className={classes.left}><Typography>Truck</Typography></Container>
+          <Container className={classes.left}>
+            <Typography>Truck</Typography>
+            {truckMenus.map(truckMenu => (
+                <div key={truckMenu.id}>
+                  <p>Cuisine</p>
+                  <div>{truckMenu.cuisineType}</div>
+                  <p>Departure Time</p>
+                  <div>{truckMenu.departureTime}</div>
+                  <p>Rating</p>
+                  <div>{truckMenu.customerRatingAvg} stars</div>
+                  <p>Location</p>
+                  <div>{truckMenu.location} stars</div>
+                </div>
+            ))}
+          </Container>
           <Container className={classes.right}><Typography>Menu</Typography></Container>
           </Container>
       </Container>
