@@ -21,7 +21,7 @@ const intialState = {
 };
 
 const userSchema = yup.object().shape({
-    username: yup.string().email().required(),
+    username: yup.string().required(),
   password: yup.string().required().max(13).min(8),
 });
 
