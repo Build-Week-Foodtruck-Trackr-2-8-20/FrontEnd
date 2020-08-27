@@ -19,13 +19,8 @@ function App() {
   useEffect(() => {
     const getTrucks = () => {
       axios
-<<<<<<< HEAD
-        .get("http://food-truck-lambda.herokuapp.com/api/trucks")
-        .then((response) => {
-=======
         .get(`http://food-truck-lambda.herokuapp.com/api/trucks?id=2`)
-        .then(response => {
->>>>>>> a6be1502529d1a2123ae581ce0ce13ba7800a6d2
+        .then((response) => {
           console.log(response);
           setTrucks(response.data);
         })
@@ -40,16 +35,31 @@ function App() {
     <div className="App">
       <Header />
       <Switch>
-<<<<<<< HEAD
         <PrivateRoute exact path="/" component={Home} />
+        <Route exact path="/tacos">
+          <Tacos truckMenu={trucks} />
+        </Route>
+        <Route exact path="/korean">
+          <Korean truckMenu={trucks} />
+        </Route>
+        <Route exact path="/bbq">
+          <BBQ truckMenu={trucks} />
+        </Route>
         <Route exact path="/registration" component={Registration} />
         <Route exact path="/login" component={LogIn} />
-        <Route exact path="/tacos" component={Tacos} />
-        <Route exact path="/korean" component={Korean} />
-        <Route exact path="/bbq" component={BBQ} />
         {/* <Route exact path="/home" component={Home} /> */}
       </Switch>
-      {/* <Switch>
+
+      <footer>
+        <Footer />
+      </footer>
+    </div>
+  );
+}
+
+export default App;
+
+/* <Switch>
         <Route
           exact
           path="/tacos"
@@ -64,24 +74,4 @@ function App() {
         />
         <Route exact path="/bbq" render={() => <BBQ truckMenu={trucks} />} />
         <Route exact path="/home" component={Home} />
-      </Switch> */}
-
-      <footer>
-        <Footer />
-      </footer>
-=======
-        <Route path="/tacos" render={() => <Tacos truckMenus={trucks} />} />
-        <Route path="/registration" render={() => <Registration />} />
-        <Route path="/login" render={() => <LogIn />} />
-        <Route path="/korean" render={() => <Korean truckMenus={trucks} />} />
-        <Route path="/bbq" render={() => <BBQ truckMenus={trucks} />} />
-        <Route path="/" component={Home} />
-      </Switch>
-      <Footer />
-      
->>>>>>> a6be1502529d1a2123ae581ce0ce13ba7800a6d2
-    </div>
-  );
-}
-
-export default App;
+      </Switch> */

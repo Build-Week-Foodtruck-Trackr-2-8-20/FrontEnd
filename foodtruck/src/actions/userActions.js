@@ -13,6 +13,8 @@ export const REGISTER_FAILURE = "REGISTER_FAILURE";
 export const LOGIN_START = "LOGIN_START";
 export const LOGIN_SUCCESS = "LOGIN";
 export const LOGIN_FAILURE = "LOGIN_FAILURE";
+export const ADD_GPS_LOCATION = "ADD_GPS_LOCATION";
+export const ADD_MANUAL_LOCATION = "ADD_MANUAL_LOCATION";
 export const ADD_FAVORITE = "ADD_FAVORITE";
 export const REMOVE_FAVORITE = "REMOVE_FAVORITE";
 
@@ -32,7 +34,7 @@ export const registerUser = (registerObj) => (dispatch) => {
       dispatch({
         type: REGISTER_SUCCESS
       })
-      history.push("/login"); // -> need to figure out why this won't work
+      // history.push("/login"); // -> need to figure out why this won't work
     })
     .catch((err) => {
       console.log(err);
@@ -57,7 +59,7 @@ export const loginUser = (loginObj) => (dispatch) => {
       })
       localStorage.setItem("authToken", res.data.token);
       // history.location.pathname = "/home";
-      history.push("/");
+      // history.push("/");
     })
     .catch((err) => {
       console.log(err)

@@ -5,8 +5,7 @@ import { Formik, Field } from "formik";
 import * as yup from "yup";
 import { connect } from "react-redux";
 import { loginUser } from "../actions/userActions";
-import axios from "axios";
-import AxiosWithAuth from "./axiosWithAuth";
+import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles({
   root: {
@@ -22,20 +21,12 @@ const intialState = {
   password: "",
 };
 const userSchema = yup.object().shape({
-<<<<<<< HEAD
   username: yup.string().required(),
-=======
-    username: yup.string().required(),
->>>>>>> a6be1502529d1a2123ae581ce0ce13ba7800a6d2
   password: yup.string().required().max(13).min(8),
 });
 
-axios
-  .get("https://food-truck-lambda.herokuapp.com/api/trucks")
-  .then((res) => console.log("trucks", res))
-  .catch((err) => console.log(err));
-
 function LogIn(props) {
+  const history = useHistory();
   const [user, setUser] = useState(intialState);
   const classes = useStyles();
   return (
@@ -45,12 +36,23 @@ function LogIn(props) {
           <Formik
             initialValues={user}
             onSubmit={(values, actions) => {
-              actions.setSubmitting(true);
+              actions.setSubmitting(props.login.loggingIn);
               console.log(values);
               props.loginUser(values);
               setTimeout(() => {
-                actions.setSubmitting(false);
-              }, 500);
+                console.log(props.login.loggingIn);
+                // some experimentation --> trying to get the redirect to work
+                // console.log(props.login.loggedIn);
+                // if (props.login.loggedIn) {
+                //   history.push("/");
+                // }
+                //this one works!
+                history.push("/");
+                actions.setSubmitting(props.login.loggingIn);
+              }, 1000);
+              // if (props.login.loggedIn) {
+              //   history.push("/");
+              // }
             }}
             validationSchema={userSchema}>
             {(props) =>
@@ -104,10 +106,23 @@ function LogIn(props) {
   );
 }
 
+// const mapStateToProps = (state) => {
+//   console.log("logged in", state);
+//   return {
+//     loggedIn: state.loggedIn,
+//     id: state.id,
+//     username: state.username,
+//     email: state.email,
+//     role: state.role,
+//   };
+// };
 const mapStateToProps = (state) => {
   console.log(state);
   return {
-    state,
+    login: {
+      loggingIn: state.login.loggingIn,
+      loggedIn: state.login.loggedIn,
+    },
   };
 };
 
