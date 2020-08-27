@@ -4,6 +4,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import { Formik, Field } from "formik";
 import * as yup from "yup";
 import { connect } from "react-redux";
+import { loginUser } from "../actions/userActions";
 
 const useStyles = makeStyles({
   root: {
