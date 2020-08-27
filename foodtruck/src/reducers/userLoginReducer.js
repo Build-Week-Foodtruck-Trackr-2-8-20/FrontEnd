@@ -1,27 +1,28 @@
 import {
   LOGIN_START,
   LOGIN_SUCCESS,
-  LOGIN_FAILURE
+  LOGIN_FAILURE,
 } from "../actions/userActions";
+
 
 export const login = (state = {}, action) => {
   switch (action.type) {
     case LOGIN_START:
-      console.log("loggin in...");
+      console.log("logging in...");
       return {
         loggingIn: true,
-          user: action.payload
+          user: action.payload,
       };
     case LOGIN_SUCCESS:
       console.log("login success...");
       return {
         loggedIn: true,
-          user: action.payload
+          user: action.payload,
       };
     case LOGIN_FAILURE:
-      console.log("login failure...")
+      console.log("login failure...");
       return {};
     default:
       return state;
   }
-}
+};

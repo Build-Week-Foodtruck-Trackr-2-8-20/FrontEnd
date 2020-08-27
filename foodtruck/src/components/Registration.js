@@ -61,10 +61,10 @@ function Registration(props) {
     }),
 
     onSubmit: (values, { resetForm }) => {
-      resetForm();
       console.log("Form submitted");
       console.log("values: ", values);
-      // props.registerUser(values);
+      props.registerUser(values);
+      resetForm();
       alert(JSON.stringify(values, null, 2));
 
       /*
@@ -87,18 +87,17 @@ function Registration(props) {
   return (
     <Container className={classes.root}>
       <form onSubmit={formik.handleSubmit}>
-        <label htmlFor="roleInput">username Type</label>
+        <label htmlFor="roleInput"> username Type </label>{" "}
         <select
           className={classes.select}
           name="role"
           id="roleInput"
           onChange={formik.handleChange}
           value={formik.values.role}>
-
-          <option value="1">Diner</option>
-          <option value="2">Operator</option>
-        </select>
-        <label htmlFor="usernameInput">username</label>
+          <option value="1"> Diner </option>{" "}
+          <option value="2"> Operator </option>{" "}
+        </select>{" "}
+        <label htmlFor="usernameInput"> username </label>{" "}
         <input
           id="usernameInput"
           name="username"
@@ -106,11 +105,11 @@ function Registration(props) {
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           value={formik.values.username}
-        />
+        />{" "}
         {formik.touched.username && formik.errors.username ? (
-          <div>{formik.errors.username}</div>
-        ) : null}
-        <label htmlFor="email">Email Address</label>
+          <div> {formik.errors.username} </div>
+        ) : null}{" "}
+        <label htmlFor="email"> Email Address </label>{" "}
         <input
           id="email"
           name="email"
@@ -118,11 +117,11 @@ function Registration(props) {
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           value={formik.values.email}
-        />
+        />{" "}
         {formik.touched.email && formik.errors.email ? (
-          <div>{formik.errors.email}</div>
-        ) : null}
-        <label htmlFor="passwordInput">Password</label>
+          <div> {formik.errors.email} </div>
+        ) : null}{" "}
+        <label htmlFor="passwordInput"> Password </label>{" "}
         <input
           id="passwordInput"
           name="password"
@@ -130,14 +129,14 @@ function Registration(props) {
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           value={formik.values.password}
-        />
+        />{" "}
         {formik.touched.password && formik.errors.password ? (
-          <div>{formik.errors.password}</div>
-        ) : null}
+          <div> {formik.errors.password} </div>
+        ) : null}{" "}
         <button className={classes.button} type="submit">
-          Submit
-        </button>
-      </form>
+          Submit{" "}
+        </button>{" "}
+      </form>{" "}
     </Container>
   );
 }
@@ -146,7 +145,10 @@ const mapStateToProps = (state) => {
   console.log(state);
   return {
     state,
+    // registration,
   };
 };
 
-export default connect(mapStateToProps, { registerUser })(Registration);
+export default connect(mapStateToProps, {
+  registerUser,
+})(Registration);
