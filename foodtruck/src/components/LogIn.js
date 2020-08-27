@@ -27,7 +27,6 @@ const userSchema = yup.object().shape({
 function LogIn(props) {
   const [user, setUser] = useState(intialState);
   const classes = useStyles();
-  console.log(user);
   return (
     <Container className={classes.root}>
       <div className="loginForm">
@@ -36,7 +35,8 @@ function LogIn(props) {
             initialValues={user}
             onSubmit={(values, actions) => {
               actions.setSubmitting(true);
-              props.setUser(values);
+              console.log(values);
+              props.loginUser(values);
               setTimeout(() => {
                 actions.setSubmitting(false);
               }, 500);

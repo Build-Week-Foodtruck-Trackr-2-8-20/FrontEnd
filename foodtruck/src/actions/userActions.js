@@ -1,5 +1,8 @@
 import axios from "axios";
-
+import axiosWithAuth from "../components/axiosWithAuth";
+import {
+  createBrowserHistory
+} from "history";
 
 export const REGISTER_START = "REGISTER_START";
 export const REGISTER_SUCCESS = "REGISTER_SUCCESS";
@@ -10,7 +13,9 @@ export const LOGIN_FAILURE = "LOGIN_FAILURE";
 export const ADD_FAVORITE = "ADD_FAVORITE";
 export const REMOVE_FAVORITE = "REMOVE_FAVORITE";
 
-// const history = createBrowserHistory();
+
+const history = createBrowserHistory();
+
 
 // registerObj = { username: "username", email: "email", password: "password", role: "diner/operator", location: "location", locationGPS: "locationGPS" }
 export const registerUser = (registerObj) => (dispatch) => {
@@ -44,7 +49,7 @@ export const loginUser = (loginObj) => (dispatch) => {
     type: LOGIN_START,
     payload: loginObj
   });
-  axios
+  axiosWithAuth()
     .post("https://food-truck-lambda.herokuapp.com/api/auth/login", loginObj)
     .then((res) => {
       console.log(res.data);
@@ -52,8 +57,8 @@ export const loginUser = (loginObj) => (dispatch) => {
         type: LOGIN_SUCCESS,
         payload: loginObj
       })
-      // localStorage.setItem("authToken", res.data.payload);
-      // history.push("/");
+      localStorage.setItem("authToken", res.data.token);
+      history.push("/");
     })
     .catch((err) => {
       console.log(err)
