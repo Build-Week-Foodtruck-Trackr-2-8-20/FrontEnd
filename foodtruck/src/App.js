@@ -19,7 +19,7 @@ function App() {
   useEffect(() => {
     const getTrucks = () => {
       axios
-        .get(`http://food-truck-lambda.herokuapp.com/api/trucks?id=2`)
+        .get(`http://food-truck-lambda.herokuapp.com/api/trucks`)
         .then((response) => {
           console.log(response);
           setTrucks(response.data);
@@ -51,20 +51,3 @@ function App() {
 }
 
 export default App;
-
-/* <Switch>
-        <Route
-          exact
-          path="/tacos"
-          render={() => <Tacos truckMenu={trucks} />}
-        />
-        <Route exact path="/registration" render={() => <Registration />} />
-        <Route exact path="/login" render={() => <LogIn />} />
-        <Route
-          exact
-          path="/korean"
-          render={() => <Korean truckMenu={trucks} />}
-        />
-        <Route exact path="/bbq" render={() => <BBQ truckMenu={trucks} />} />
-        <Route exact path="/home" component={Home} />
-      </Switch> */
