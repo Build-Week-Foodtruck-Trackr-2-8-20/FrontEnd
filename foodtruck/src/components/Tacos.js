@@ -2,6 +2,7 @@ import React from 'react';
 import Container from '@material-ui/core/Container';
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from '@material-ui/core/Typography';
+import tacoImg from '../images/xavier-crook-wIqpmuOloVA-unsplash.jpg'
 import '../App.css';
 
 const useStyles = makeStyles({
@@ -47,7 +48,7 @@ function Tacos(props) {
       <Container maxWidth="lg">
           BBQ
           <Container className={classes.header}>
-          <img className={classes.image} src="http://placehold.it/1000x300"
+          <img className={classes.image} src={tacoImg}
               alt="Placeholder"
           />  
           </Container>
