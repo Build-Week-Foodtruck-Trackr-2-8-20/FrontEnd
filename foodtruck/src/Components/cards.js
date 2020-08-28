@@ -16,7 +16,14 @@ const Cards = (props) => {
 
     const renderCard = (card, index) => {
         return(
-
+          <div>
+            <style>
+              {
+                `.cardButton{
+                    width: 100%;
+                  }`
+              }
+            </style>
             <Card style={{ width: "18rem"}} key = {index} className="box">
             <CardImg className="cardImg"   src={card.image} alt="Card image cap" />
             <CardBody>
@@ -25,7 +32,7 @@ const Cards = (props) => {
               <Button className="cardButton" href={card.link} > Order Now </Button>
             </CardBody>
           </Card>
-
+          </div>
         )
     }
 
