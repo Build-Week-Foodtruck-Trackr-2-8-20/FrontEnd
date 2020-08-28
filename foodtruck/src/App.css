@@ -91,7 +91,7 @@ input:placeholder {
 }
 
 button {
-  width: 50px;
+  width: auto;
   display: inline-block;
   padding: 8px 11px;
   font-size: 1.2rem;

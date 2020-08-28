@@ -9,16 +9,16 @@ import {
 
 const items = [
     {
-      src: 'https://images.unsplash.com/photo-1552332386-f8dd00dc2f85?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1051&q=80',
+      src: 'https://images.unsplash.com/photo-1552332386-f8dd00dc2f85?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700',
       caption: 'Street Tacos'
      
     },
     {
-      src: 'https://images.unsplash.com/photo-1475869430886-fb14585f7443?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80',
+      src: 'https://images.unsplash.com/photo-1475869430886-fb14585f7443?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700',
         caption: ' BBQ '
     },
     {
-      src: 'https://images.unsplash.com/photo-1498654896293-37aacf113fd9?ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80',
+      src: 'https://images.unsplash.com/photo-1498654896293-37aacf113fd9?ixlib=rb-1.2.1&auto=format&fit=crop&w=700',
         caption:'Korean '
     }
    
@@ -54,7 +54,7 @@ const items = [
           key={item.src}
         >
           <img src={item.src} alt={item.altText} className="custom-tag" />
-          <CarouselCaption className="text-primary" captionHeader={item.caption} captionText={item.caption} />
+
         </CarouselItem>
       );
     });

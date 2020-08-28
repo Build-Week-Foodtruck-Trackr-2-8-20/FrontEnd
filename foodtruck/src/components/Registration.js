@@ -87,7 +87,7 @@ function Registration(props) {
   return (
     <Container className={classes.root}>
       <form onSubmit={formik.handleSubmit}>
-        <label htmlFor="roleInput"> username Type </label>{" "}
+        <label htmlFor="roleInput"> User Type </label>{" "}
         <select
           className={classes.select}
           name="role"
