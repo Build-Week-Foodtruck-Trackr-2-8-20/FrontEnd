@@ -17,9 +17,8 @@ const useStyles = makeStyles({
 
 const intialState = {
   username: "",
-  password: ""
+  password: "",
 };
-
 const userSchema = yup.object().shape({
     username: yup.string().required(),
   password: yup.string().required().max(13).min(8),
@@ -28,9 +27,7 @@ const userSchema = yup.object().shape({
 function LogIn(props) {
   const [user, setUser] = useState(intialState);
   const classes = useStyles();
-  console.log(user);
   return (
- 
     <Container className={classes.root}>
       <div className="loginForm">
         <Fragment>
@@ -38,8 +35,10 @@ function LogIn(props) {
             initialValues={user}
             onSubmit={(values, actions) => {
               actions.setSubmitting(true);
+
+              console.log(values);
               props.loginUser(values);
-              setUser(values);
+
               setTimeout(() => {
                 actions.setSubmitting(false);
               }, 500);
@@ -49,16 +48,16 @@ function LogIn(props) {
               !props.isSubmitting ? (
                 <form onSubmit={props.handleSubmit} className="">
                   <Field
-                    type="email"
-                    placeholder="Enter email"
+                    type="username"
+                    placeholder="Enter username"
                     onChange={props.handleChange}
-                    name="email"
-                    value={props.values.email}
+                    name="username"
+                    value={props.values.username}
                     className="textfield"
                   />
 
-                  {props.errors.email && props.touched.email ? (
-                    <span className="textfield">{props.errors.email}</span>
+                  {props.errors.username && props.touched.username ? (
+                    <span className="textfield">{props.errors.username}</span>
                   ) : (
                     ""
                   )}
@@ -97,7 +96,6 @@ function LogIn(props) {
 }
 
 const mapStateToProps = (state) => {
-  console.log(state);
   return {
     state,
   };

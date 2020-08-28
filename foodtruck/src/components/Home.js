@@ -2,10 +2,9 @@ import React from 'react';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import { makeStyles } from "@material-ui/core/styles";
-import '../App.css';
+//import '../App.css';
 import  ImgSlider from "./Carousel"
 import Cards from "./cards"
-
 
 const useStyles = makeStyles({
   root: {
@@ -16,7 +15,6 @@ const useStyles = makeStyles({
     height: '100vh'
   }, 
   header: {
-    margin: '50px auto 5px',
     padding: '0px'
   }, 
   image: {
@@ -44,14 +42,15 @@ function Home() {
   const classes = useStyles();
 
   return (
-
-      <div className="homeContainer">
-        <ImgSlider/>
-        <Cards/>
-      </div>
-    
-
-
+    <React.Fragment>
+      <Container maxWidth="lg">
+          <Typography>Home</Typography>
+          <Container className={classes.header}>
+            <ImgSlider className={classes.image} />
+          </Container>
+          <Cards />
+      </Container>
+    </React.Fragment>
   );
 }
 
