@@ -3,7 +3,6 @@ import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import { makeStyles } from "@material-ui/core/styles";
 import bbqImg from '../images/jose-ignacio-pompe-s-Z-h0fEiBM-unsplash.jpg'
-import '../App.css';
 
 const useStyles = makeStyles({
   root: {
