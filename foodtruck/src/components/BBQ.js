@@ -2,6 +2,7 @@ import React from 'react';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import { makeStyles } from "@material-ui/core/styles";
+import bbqImg from '../images/jose-ignacio-pompe-s-Z-h0fEiBM-unsplash.jpg'
 import '../App.css';
 
 const useStyles = makeStyles({
@@ -48,7 +49,7 @@ function BBQ(props) {
       <Container maxWidth="lg">
           BBQ
           <Container className={classes.header}>
-          <img className={classes.image} src="http://placehold.it/1000x300"
+          <img className={classes.image} src={bbqImg}
               alt="Placeholder"
           />  
           </Container>
