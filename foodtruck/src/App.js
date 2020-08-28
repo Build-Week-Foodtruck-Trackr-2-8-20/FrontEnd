@@ -21,7 +21,7 @@ function App() {
   useEffect(() => {
     const getTrucks = () => {
       axios
-        .get(`http://food-truck-lambda.herokuapp.com/api/trucks`)
+        .get(`http://food-truck-lambda.herokuapp.com/api/diners`)
         .then(response => {
           console.log(response);
           setTrucks(response.data);
