@@ -38,7 +38,7 @@ function LogIn(props) {
             initialValues={user}
             onSubmit={(values, actions) => {
               actions.setSubmitting(true);
-              // props.loginUser(values);
+              props.loginUser(values);
               setUser(values);
               setTimeout(() => {
                 actions.setSubmitting(false);

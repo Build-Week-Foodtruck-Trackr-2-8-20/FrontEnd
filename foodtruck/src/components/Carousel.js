@@ -23,20 +23,22 @@ const items = [
     }
    
   ];
+
+
   
-  const ImgSlider = (props) => {
+  const CarouselSlider = (props) => {
     const [activeIndex, setActiveIndex] = useState(0);
     const [animating, setAnimating] = useState(false);
   
     const next = () => {
       if (animating) return;
-      const nextIndex = activeIndex === items.length - 1 ? 0 : activeIndex + 1;
+      const nextIndex = activeIndex === props.length - 1 ? 0 : activeIndex + 1;
       setActiveIndex(nextIndex);
     }
   
     const previous = () => {
       if (animating) return;
-      const nextIndex = activeIndex === 0 ? items.length - 1 : activeIndex - 1;
+      const nextIndex = activeIndex === 0 ? props.length - 1 : activeIndex - 1;
       setActiveIndex(nextIndex);
     }
   
@@ -45,7 +47,7 @@ const items = [
       setActiveIndex(newIndex);
     }
   
-    const slides = items.map((item) => {
+    const slides = props.map((item) => {
       return (
         <CarouselItem
           onExiting={() => setAnimating(true)}
@@ -65,7 +67,7 @@ const items = [
         previous={previous}
       >
     
-        <CarouselIndicators   items={items} activeIndex={activeIndex} onClickHandler={goToIndex} />
+        <CarouselIndicators   items={props} activeIndex={activeIndex} onClickHandler={goToIndex} />
         {slides}
         <CarouselControl direction="prev" directionText="Previous" onClickHandler={previous} />
         <CarouselControl direction="next" directionText="Next" onClickHandler={next} />
@@ -73,5 +75,16 @@ const items = [
       </Carousel>
     );
   };
+
+
+  const ImageSlider = () => {
+      return(
+        CarouselSlider(items)
+      )
+  }
+ 
+
+
+
   
-  export default ImgSlider;
+  export default ImageSlider;
