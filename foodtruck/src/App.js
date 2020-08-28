@@ -9,11 +9,7 @@ import Korean from "./components/Korean";
 import BBQ from "./components/BBQ";
 import Tacos from "./components/Tacos";
 import Home from "./components/Home";
-import "./App.css";
 import axios from 'axios';
-
-
-
 
 function App() {
   const [trucks, setTrucks] = useState([]);
