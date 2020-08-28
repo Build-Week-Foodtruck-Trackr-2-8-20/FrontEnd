@@ -54,7 +54,7 @@ const items = [
           key={item.src}
         >
           <img src={item.src} alt={item.altText} className="custom-tag" />
-          <CarouselCaption className="text-primary" captionHeader={item.caption} />
+          <CarouselCaption className="text-primary" captionHeader={item.caption} captionText={item.caption} />
         </CarouselItem>
       );
     });
