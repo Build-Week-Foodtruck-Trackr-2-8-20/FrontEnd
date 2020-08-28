@@ -4,8 +4,8 @@ import Container from "@material-ui/core/Container";
 import { makeStyles } from "@material-ui/core/styles";
 import { connect } from "react-redux";
 //import '../App.css';
-//import  ImgSlider from "./Carousel"
-//import Cards from "./cards"
+import ImgSlider from "./Carousel";
+import Cards from "./cards";
 
 const useStyles = makeStyles({
   root: {
@@ -16,7 +16,6 @@ const useStyles = makeStyles({
     height: "100vh",
   },
   header: {
-    margin: "50px auto 5px",
     padding: "0px",
   },
   image: {
@@ -46,19 +45,12 @@ function Home() {
   return (
     <React.Fragment>
       <Container maxWidth="lg">
-        <Typography> Home </Typography>{" "}
+        <Typography>Home</Typography>
         <Container className={classes.header}>
-          <img
-            className={classes.image}
-            src="http://placehold.it/1000x300"
-            srcset="
-    http: //placehold.it/1000x300 300w"
-            sizes="
-    100 vw "
-            alt="Placeholder"
-          />
-        </Container>{" "}
-      </Container>{" "}
+          <ImgSlider className={classes.image} />
+        </Container>
+        <Cards />
+      </Container>
     </React.Fragment>
   );
 }

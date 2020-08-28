@@ -43,11 +43,10 @@ function App() {
         <Route exact path="/login" component={LogIn} />
         {/* <Route exact path="/home" component={Home} /> */}
       </Switch>
-      <footer>
-        <Footer />
-      </footer>
+      <Footer />
     </div>
   );
 }
 
 export default App;
+// random comment
