@@ -3,11 +3,10 @@ import Container from "@material-ui/core/Container";
 import { makeStyles } from "@material-ui/core/styles";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-//import axios from "axios";
 import "../App.css";
 import { connect } from "react-redux";
-// import { userActions } from "../actions/userActions";
 import { registerUser } from "../actions/userActions";
+import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles({
   root: {
@@ -30,6 +29,7 @@ const useStyles = makeStyles({
 });
 
 function Registration(props) {
+  const history = useHistory();
   console.log(props);
   const classes = useStyles();
   //const [value, setValue] = React.useState('diner');
@@ -66,6 +66,7 @@ function Registration(props) {
       props.registerUser(values);
       resetForm();
       alert(JSON.stringify(values, null, 2));
+      history.push("/login");
 
       /*
       axios
