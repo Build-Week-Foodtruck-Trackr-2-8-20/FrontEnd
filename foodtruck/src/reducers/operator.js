@@ -1,3 +1,7 @@
+import {
+  ADD_TRUCK
+} from "../actions/userActions";
+
 const initialState = {
   id: 0,
   username: "",
@@ -10,7 +14,15 @@ const initialState = {
 
 export const operator = (state = initialState, action) => {
   switch (action.type) {
-    default:
-      return state
+    case ADD_TRUCK:
+      return {
+        ...state,
+        trucksOwned: [
+          ...state.trucksOwned,
+          action.payload
+        ]
+      }
+      default:
+        return state
   }
 }

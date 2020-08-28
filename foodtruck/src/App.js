@@ -36,20 +36,13 @@ function App() {
       <Header />
       <Switch>
         <PrivateRoute exact path="/" component={Home} />
-        <Route exact path="/tacos">
-          <Tacos truckMenu={trucks} />
-        </Route>
-        <Route exact path="/korean">
-          <Korean truckMenu={trucks} />
-        </Route>
-        <Route exact path="/bbq">
-          <BBQ truckMenu={trucks} />
-        </Route>
+        <PrivateRoute exact path="/tacos" component={Tacos} />
+        <PrivateRoute exact path="/korean" component={Korean} />
+        <PrivateRoute exact path="/bbq" component={BBQ} />
         <Route exact path="/registration" component={Registration} />
         <Route exact path="/login" component={LogIn} />
         {/* <Route exact path="/home" component={Home} /> */}
       </Switch>
-
       <footer>
         <Footer />
       </footer>

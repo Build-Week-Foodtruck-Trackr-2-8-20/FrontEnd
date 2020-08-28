@@ -18,8 +18,9 @@ export const ADD_MENU_ITEM = "ADD_MENU_ITEM";
 export const ADD_MENU_ITEM_PHOTO = "ADD_MENU_ITEM_PHOTO";
 export const ADD_FAVORITE = "ADD_FAVORITE";
 export const REMOVE_FAVORITE = "REMOVE_FAVORITE";
+export const ADD_TRUCK_RATING = "ADD_TRUCK_RATING";
 
-
+// registerObj = {username: "", email: "", password: "", role: 0, location: "//optional", locationGPS: "//optional"}
 export const registerUser = (registerObj) => (dispatch) => {
   console.log("userActions.js: registerUser: registerObj: ", registerObj);
   dispatch({
@@ -41,6 +42,7 @@ export const registerUser = (registerObj) => (dispatch) => {
     });
 };
 
+// loginObj = {username: "", password: ""}
 export const loginUser = (loginObj) => (dispatch) => {
   dispatch({
     type: LOGIN_START,
@@ -87,6 +89,7 @@ export const addTruck = (truckObj) => (dispatch) => {
     .catch((err) => console.log(err))
 }
 
+// menuObj = {itemName: "", itemDescription: "", itemPrice: "", customerRatingAvg: 0, truckid: 0}
 export const addMenuItem = (menuObj) => (dispatch) => {
   axiosWithAuth()
     .post("https://food-truck-lambda.herokuapp.com/api/trucks/menuItems", menuObj)
@@ -99,9 +102,10 @@ export const addMenuItem = (menuObj) => (dispatch) => {
     .catch((err) => console.log(err))
 }
 
+// photoObj = {photoURL: "", menuitemid: 0}
 export const addMenuItemPhoto = (photoObj) => (dispatch) => {
   axiosWithAuth()
-    .post(`https://food-truck-lambda.herokuapp.com/api/menuitems/${photoObj.id}/photos`, photoObj)
+    .post(`https://food-truck-lambda.herokuapp.com/api/menuitems/${photoObj.menuitemid}/photos`, photoObj)
     .then((res) => {
       dispatch({
         type: ADD_MENU_ITEM_PHOTO,
@@ -138,3 +142,21 @@ export const removeFavorite = (dinerTruckIDsObj) => (dispatch) => {
     })
     .catch((err) => console.log(err))
 }
+
+// truckRatingObj = {rating: 0, truckid: 0, username: ""}
+export const addTruckRating = (truckRatingObj) => (dispatch) => {
+  axiosWithAuth()
+    .post(`https://food-truck-lambda.herokuapp.com/api/trucks/${truckRatingObj.truckid}/ratings`, truckRatingObj)
+    .then((res) => {
+      dispatch({
+        type: ADD_TRUCK_RATING,
+        payload: res.data
+      })
+    })
+}
+
+// menuRatingObj = {rating: 0, menuitemid: 0, username: ""}
+// export const addMenuItemRating = (menuRatingObj) => (dispatch) => {
+//   axiosWithAuth()
+//     .post()
+// }

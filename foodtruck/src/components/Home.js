@@ -2,6 +2,7 @@ import React from "react";
 import Typography from "@material-ui/core/Typography";
 import Container from "@material-ui/core/Container";
 import { makeStyles } from "@material-ui/core/styles";
+import { connect } from "react-redux";
 //import '../App.css';
 //import  ImgSlider from "./Carousel"
 //import Cards from "./cards"
@@ -62,12 +63,12 @@ function Home() {
   );
 }
 
-const mapStateToProps = (state) => {
-  console.log(state);
-  return {
-    state,
-  };
-};
+// const mapStateToProps = (state) => {
+//   console.log(state);
+//   return {
+//     state,
+//   };
+// };
 
-// export default connect(mapStateToProps, {})(Home);
-export default Home;
+export default connect(null, {})(Home);
+// export default Home;

@@ -52,7 +52,6 @@ function LogIn(props) {
               }, 1000);
             }}
             validationSchema={userSchema}>
-            {" "}
             {(props) =>
               !props.isSubmitting ? (
                 <form onSubmit={props.handleSubmit} className="">
@@ -86,16 +85,16 @@ function LogIn(props) {
                     type="submit"
                     disabled={!props.dirty && props.isSubmitting}
                     className="submitButton">
-                    Login{" "}
-                  </button>{" "}
+                    Login
+                  </button>
                 </form>
               ) : (
                 <span className="user"> {JSON.stringify(user, null, 2)} </span>
               )
-            }{" "}
-          </Formik>{" "}
-        </Fragment>{" "}
-      </div>{" "}
+            }
+          </Formik>
+        </Fragment>
+      </div>
     </Container>
   );
 }
@@ -110,6 +109,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, {
-  loginUser,
-})(LogIn);
+export default connect(mapStateToProps, { loginUser })(LogIn);

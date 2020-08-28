@@ -3,7 +3,8 @@ import {
   ADD_GPS_LOCATION,
   ADD_MANUAL_LOCATION,
   ADD_FAVORITE,
-  REMOVE_FAVORITE
+  REMOVE_FAVORITE,
+  // ADD_TRUCK_RATING
 } from "../actions/userActions";
 
 const initialState = {
