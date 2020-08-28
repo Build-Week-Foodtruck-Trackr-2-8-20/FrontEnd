@@ -57,7 +57,7 @@ function Registration(props) {
         .max(20, "Must be 20 characters or less")
         .required("Required"),
       email: Yup.string().email("Invalid email address").required("Required"),
-      password: Yup.string().required("Required"),
+      password: Yup.string().min(6, "Password must be at least 6 characters long.").required("Required"),
     }),
 
     onSubmit: (values, { resetForm }) => {
