@@ -19,10 +19,10 @@ export const ADD_MENU_ITEM_PHOTO = "ADD_MENU_ITEM_PHOTO";
 export const ADD_FAVORITE = "ADD_FAVORITE";
 export const REMOVE_FAVORITE = "REMOVE_FAVORITE";
 export const ADD_TRUCK_RATING = "ADD_TRUCK_RATING";
+export const POPULATE_TRUCK_DATA = "POPULATE_TRUCK_DATA";
 
 // registerObj = {username: "", email: "", password: "", role: 0, location: "//optional", locationGPS: "//optional"}
 export const registerUser = (registerObj) => (dispatch) => {
-  console.log("userActions.js: registerUser: registerObj: ", registerObj);
   dispatch({
     type: REGISTER_START,
   });
@@ -160,3 +160,15 @@ export const addTruckRating = (truckRatingObj) => (dispatch) => {
 //   axiosWithAuth()
 //     .post()
 // }
+
+// populate data
+export const populateTrucks = (truckData) => {
+  console.log(truckData)
+  return {
+    truckData
+  }
+  // return {
+  //   type: POPULATE_TRUCK_DATA,
+  //   payload: truckData
+  // }
+}

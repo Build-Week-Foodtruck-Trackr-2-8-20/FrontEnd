@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Typography from "@material-ui/core/Typography";
 import Container from "@material-ui/core/Container";
 import { makeStyles } from "@material-ui/core/styles";
@@ -6,6 +6,9 @@ import { connect } from "react-redux";
 //import '../App.css';
 import ImgSlider from "./Carousel";
 import Cards from "./cards";
+import { populateTrucks } from "../actions/userActions";
+import axios from "axios";
+import { axiosWithAuth } from "./axiosWithAuth";
 
 const useStyles = makeStyles({
   root: {
@@ -41,6 +44,19 @@ const useStyles = makeStyles({
 
 function Home() {
   const classes = useStyles();
+
+  const [trucks, setTrucks] = useState([]);
+
+  useEffect(() => {
+    axiosWithAuth()
+      .get(`http://food-truck-lambda.herokuapp.com/api/trucks`)
+      .then((response) => {
+        populateTrucks(response.data);
+      })
+      .catch((error) => {
+        console.error("Server Error", error);
+      });
+  }, []);
 
   return (
     <React.Fragment>

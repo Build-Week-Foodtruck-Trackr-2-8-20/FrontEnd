@@ -20,7 +20,7 @@ const initialState = [{
     itemDescription: "",
     itemPrice: 0, // should be a float
     customerRatings: [],
-    // customerRatingAvg: initialState.customerRatings.reduce((a, b) => a + b) / (initialState.customerRatings.length), // something like that
+    customerRatingAvg: 0
   }]
 }]
 

@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from "react";
-//import ImgSlider from './Components/Carousel'
+import React from "react";
 import LogIn from "./components/LogIn";
 import Registration from "./components/Registration";
 import { Route, Switch } from "react-router-dom";
@@ -10,26 +9,26 @@ import BBQ from "./components/BBQ";
 import Tacos from "./components/Tacos";
 import Home from "./components/Home";
 import "./App.css";
-import axios from "axios";
 import PrivateRoute from "./components/privateRoute";
 
 function App() {
-  const [trucks, setTrucks] = useState([]);
+  // const [trucks, setTrucks] = useState([]);
 
-  useEffect(() => {
-    const getTrucks = () => {
-      axios
-        .get(`http://food-truck-lambda.herokuapp.com/api/trucks`)
-        .then((response) => {
-          console.log(response);
-          setTrucks(response.data);
-        })
-        .catch((error) => {
-          console.error("Server Error", error);
-        });
-    };
-    getTrucks();
-  }, []);
+  // useEffect(() => {
+  //   const getTrucks = () => {
+  //     axios
+  //       .get(`http://food-truck-lambda.herokuapp.com/api/trucks`)
+  //       .then((response) => {
+  //         setTrucks(response.data);
+  //       })
+  //       .catch((error) => {
+  //         console.error("Server Error", error);
+  //       });
+  //   };
+  //   getTrucks();
+  // }, []);
+
+  // console.log("tucks: ", trucks);
 
   return (
     <div className="App">
@@ -41,7 +40,6 @@ function App() {
         <PrivateRoute exact path="/bbq" component={BBQ} />
         <Route exact path="/registration" component={Registration} />
         <Route exact path="/login" component={LogIn} />
-        {/* <Route exact path="/home" component={Home} /> */}
       </Switch>
       <Footer />
     </div>
@@ -49,4 +47,3 @@ function App() {
 }
 
 export default App;
-// random comment

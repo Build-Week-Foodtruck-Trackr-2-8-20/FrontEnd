@@ -29,6 +29,7 @@ function LogIn(props) {
   const history = useHistory();
   const [user, setUser] = useState(intialState);
   const classes = useStyles();
+
   return (
     <Container className={classes.root}>
       <div className="loginForm">
@@ -49,7 +50,7 @@ function LogIn(props) {
                 //this one works!
                 actions.setSubmitting(props.login.loggingIn);
                 history.push("/");
-              }, 1000);
+              }, 500);
             }}
             validationSchema={userSchema}>
             {(props) =>

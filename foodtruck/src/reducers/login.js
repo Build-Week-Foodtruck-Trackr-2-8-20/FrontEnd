@@ -14,6 +14,7 @@ export const login = (state = initialState, action) => {
     case LOGIN_START:
       console.log("logging in...");
       return {
+        ...state,
         loggingIn: true,
       };
     case LOGIN_SUCCESS:
@@ -24,7 +25,10 @@ export const login = (state = initialState, action) => {
       };
     case LOGIN_FAILURE:
       console.log("login failure...");
-      return {};
+      return {
+        loggingIn: false,
+          loggedIn: false
+      };
     default:
       return state;
   }
