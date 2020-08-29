@@ -5,11 +5,8 @@ import {
 } from "../actions/userActions";
 
 const initialState = {
+  loggingIn: false,
   loggedIn: false,
-  id: "",
-  username: "",
-  email: "",
-  role: ""
 }
 
 export const login = (state = initialState, action) => {
@@ -17,22 +14,21 @@ export const login = (state = initialState, action) => {
     case LOGIN_START:
       console.log("logging in...");
       return {
+        ...state,
         loggingIn: true,
-          user: action.payload,
       };
     case LOGIN_SUCCESS:
       console.log("login success...");
-      console.log("login success", action.payload)
       return {
-        loggedIn: true,
-          id: action.payload.id,
-          username: action.payload.username,
-          email: action.payload.email,
-          role: action.payload.role,
+        loggingIn: false,
+          loggedIn: true,
       };
     case LOGIN_FAILURE:
       console.log("login failure...");
-      return {};
+      return {
+        loggingIn: false,
+          loggedIn: false
+      };
     default:
       return state;
   }
