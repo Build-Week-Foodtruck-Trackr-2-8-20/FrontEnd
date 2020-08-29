@@ -2,7 +2,9 @@ import React, { useEffect, useState } from "react";
 import Typography from "@material-ui/core/Typography";
 import Container from "@material-ui/core/Container";
 import { makeStyles } from "@material-ui/core/styles";
-import ImgSlider from "./Carousel";
+import { connect } from "react-redux";
+//import '../App.css';
+//import ImgSlider from "./Carousel";
 import Cards from "./cards";
 
 const useStyles = makeStyles({
@@ -45,7 +47,7 @@ function Home() {
       <Container maxWidth="lg">
         <Typography>Home</Typography>
         <Container className={classes.header}>
-          <ImgSlider className={classes.image} />
+
         </Container>
         <Cards />
       </Container>
