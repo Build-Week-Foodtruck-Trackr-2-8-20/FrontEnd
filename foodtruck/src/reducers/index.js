@@ -3,12 +3,24 @@ import {
 } from "redux";
 import {
   registration
-} from "./userRegisterReducer";
+} from "./register";
 import {
   login
-} from "./userLoginReducer";
+} from "./login";
+import {
+  diner
+} from "./diner";
+import {
+  operator
+} from "./operator";
+import {
+  trucks
+} from "./trucks";
 
 export const rootReducer = combineReducers({
   registration,
-  login
+  login,
+  diner,
+  operator,
+  trucks
 })
