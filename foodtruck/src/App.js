@@ -19,6 +19,7 @@ function App() {
       axios
         .get(`http://food-truck-lambda.herokuapp.com/api/trucks`)
         .then((response) => {
+          console.log(response, "SUCCESS")
           setTrucks(response.data);
         })
         .catch((error) => {
