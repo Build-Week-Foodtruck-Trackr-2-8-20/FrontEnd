@@ -2,7 +2,7 @@ import React from 'react';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import { makeStyles } from "@material-ui/core/styles";
-import '../App.css';
+import koreanImg from '../images/markus-winkler-n-E0XNnGc-Q-unsplash.jpg';
 
 const useStyles = makeStyles({
   root: {
@@ -41,14 +41,13 @@ const useStyles = makeStyles({
 function Korean(props) {
   const classes = useStyles();
   const { truckMenus } = props;
-  console.log(props)
 
   return (
     <React.Fragment>
       <Container maxWidth="lg">
           BBQ
           <Container className={classes.header}>
-          <img className={classes.image} src="http://placehold.it/1000x300"
+          <img className={classes.image} src={koreanImg}
               alt="Placeholder"
           />  
           </Container>

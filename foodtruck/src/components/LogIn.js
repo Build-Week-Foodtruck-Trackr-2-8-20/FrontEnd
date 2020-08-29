@@ -5,6 +5,7 @@ import { Formik, Field } from "formik";
 import * as yup from "yup";
 import { connect } from "react-redux";
 import { loginUser } from "../actions/userActions";
+import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles({
   root: {
@@ -20,13 +21,15 @@ const intialState = {
   password: "",
 };
 const userSchema = yup.object().shape({
-    username: yup.string().required(),
+  username: yup.string().required(),
   password: yup.string().required().max(13).min(8),
 });
 
 function LogIn(props) {
+  const history = useHistory();
   const [user, setUser] = useState(intialState);
   const classes = useStyles();
+
   return (
     <Container className={classes.root}>
       <div className="loginForm">
@@ -34,13 +37,21 @@ function LogIn(props) {
           <Formik
             initialValues={user}
             onSubmit={(values, actions) => {
+              console.log(props.login.loggingIn);
               actions.setSubmitting(true);
 
               console.log(values);
               props.loginUser(values);
 
               setTimeout(() => {
-                actions.setSubmitting(false);
+                // some experimentation --> trying to get the redirect to work
+                // console.log(props.login.loggedIn);
+                // if (props.login.loggedIn) {
+                //   history.push("/");
+                // }
+                //this one works!
+                actions.setSubmitting(props.login.loggingIn);
+                history.push("/");
               }, 500);
             }}
             validationSchema={userSchema}>
@@ -55,13 +66,11 @@ function LogIn(props) {
                     value={props.values.username}
                     className="textfield"
                   />
-
                   {props.errors.username && props.touched.username ? (
-                    <span className="textfield">{props.errors.username}</span>
+                    <span className="textfield"> {props.errors.username} </span>
                   ) : (
                     ""
                   )}
-
                   <Field
                     type="password"
                     onChange={props.handleChange}
@@ -70,13 +79,11 @@ function LogIn(props) {
                     placeholder="Password"
                     className="textfield"
                   />
-
                   {props.errors.password && props.touched.password ? (
-                    <span className="fieldtext">{props.errors.password}</span>
+                    <span className="fieldtext"> {props.errors.password} </span>
                   ) : (
                     ""
                   )}
-
                   <button
                     type="submit"
                     disabled={!props.dirty && props.isSubmitting}
@@ -85,7 +92,7 @@ function LogIn(props) {
                   </button>
                 </form>
               ) : (
-                <span className="user">{JSON.stringify(user, null, 2)}</span>
+                <span className="user"> {JSON.stringify(user, null, 2)} </span>
               )
             }
           </Formik>
@@ -96,8 +103,12 @@ function LogIn(props) {
 }
 
 const mapStateToProps = (state) => {
+  console.log(state);
   return {
-    state,
+    login: {
+      loggingIn: state.login.loggingIn,
+      loggedIn: state.login.loggedIn,
+    },
   };
 };
 
