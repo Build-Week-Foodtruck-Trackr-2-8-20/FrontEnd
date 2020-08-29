@@ -8,8 +8,8 @@ import {
   login
 } from "./login";
 import {
-  diner
-} from "./diner";
+  user
+} from "./user";
 import {
   operator
 } from "./operator";
@@ -20,7 +20,7 @@ import {
 export const rootReducer = combineReducers({
   registration,
   login,
-  diner,
+  user,
   operator,
   trucks
 })
