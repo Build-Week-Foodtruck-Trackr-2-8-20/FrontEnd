@@ -19,7 +19,7 @@ export const ADD_MENU_ITEM_PHOTO = "ADD_MENU_ITEM_PHOTO";
 export const ADD_FAVORITE = "ADD_FAVORITE";
 export const REMOVE_FAVORITE = "REMOVE_FAVORITE";
 export const ADD_TRUCK_RATING = "ADD_TRUCK_RATING";
-export const POPULATE_TRUCK_DATA = "POPULATE_TRUCK_DATA";
+export const GET_TRUCKS = "GET_TRUCKS";
 
 // registerObj = {username: "", email: "", password: "", role: 0, location: "//optional", locationGPS: "//optional"}
 export const registerUser = (registerObj) => (dispatch) => {
@@ -49,12 +49,13 @@ export const loginUser = (loginObj) => (dispatch) => {
     payload: loginObj
   });
   axiosWithAuth()
-    .post("https://food-truck-lambda.herokuapp.com/api/auth/login", loginObj)
+    .post("/api/auth/login", loginObj)
     .then((res) => {
       console.log(res.data);
       dispatch({
         type: LOGIN_SUCCESS,
       })
+      localStorage.setItem("authToken", res.data.token);
       res.data.role === 1 ?
         dispatch({
           type: LOGIN_USER_SUCCESS,
@@ -64,7 +65,7 @@ export const loginUser = (loginObj) => (dispatch) => {
           type: LOGIN_OPERATOR_SUCCESS,
           payload: res.data
         })
-      localStorage.setItem("authToken", res.data.token);
+
     })
     .catch((err) => {
       console.log(err)
@@ -81,6 +82,7 @@ export const addTruck = (truckObj) => (dispatch) => {
   axiosWithAuth()
     .post("https://food-truck-lambda.herokuapp.com/api/trucks", truckObj)
     .then((res) => {
+      console.log(res.data)
       dispatch({
         type: ADD_TRUCK,
         payload: res.data
@@ -162,13 +164,16 @@ export const addTruckRating = (truckRatingObj) => (dispatch) => {
 // }
 
 // populate data
-export const populateTrucks = (truckData) => {
-  console.log(truckData)
-  return {
-    truckData
-  }
-  // return {
-  //   type: POPULATE_TRUCK_DATA,
-  //   payload: truckData
-  // }
-}
+// export const getTrucks = (truckData) => (dispatch) => {
+//   dispatch({
+//     type: GET_TRUCKS,
+//     payload: truckData
+//   })
+// }
+
+export const getTrucks = (truckData) => (dispatch) => (
+  dispatch({
+    type: GET_TRUCKS,
+    payload: truckData
+  })
+)

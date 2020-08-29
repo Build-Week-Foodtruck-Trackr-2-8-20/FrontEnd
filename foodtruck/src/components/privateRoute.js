@@ -5,13 +5,12 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
   return (
     <Route
       {...rest}
-      //render={props =>...}
-      render={() => {
-        // fixed error where it wouldn't allow us to access the Home page, by changing "token" to "authToken"
+      render={(props) => {
         if (localStorage.getItem("authToken")) {
-          return <Component />;
+          return <Component {...props} />;
+        } else {
+          return <Redirect to="/login" />;
         }
-        return <Redirect to="/login" />;
       }}
     />
   );

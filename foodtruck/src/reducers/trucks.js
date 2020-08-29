@@ -1,5 +1,6 @@
 import {
-  ADD_TRUCK_RATING
+  ADD_TRUCK_RATING,
+  GET_TRUCKS
 } from "../actions/userActions"
 
 const initialState = [{
@@ -12,20 +13,13 @@ const initialState = [{
   customerRatingAvg: "",
   username: "",
   dinerRatingsArray: [],
-  menuItems: [{
-    menuItemId: 0,
-    truckid: 0,
-    itemImage: "",
-    itemName: "",
-    itemDescription: "",
-    itemPrice: 0, // should be a float
-    customerRatings: [],
-    customerRatingAvg: 0
-  }]
 }]
 
-export const trucks = (state = initialState, action) => {
+export const trucks = (state = [], action) => {
   switch (action.type) {
+    case GET_TRUCKS:
+      console.log("action firing")
+      return action.payload
     case ADD_TRUCK_RATING:
       return {
         ...state,
