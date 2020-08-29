@@ -4,7 +4,7 @@ import Container from "@material-ui/core/Container";
 import { makeStyles } from "@material-ui/core/styles";
 import { connect } from "react-redux";
 //import '../App.css';
-//import ImgSlider from "./Carousel";
+import ImgSlider from "./Carousel";
 import Cards from "./cards";
 import { populateTrucks } from "../actions/userActions";
 import axios from "axios";
@@ -63,7 +63,7 @@ function Home() {
       <Container maxWidth="lg">
         <Typography>Home</Typography>
         <Container className={classes.header}>
-
+          <ImgSlider className={classes.image} />
         </Container>
         <Cards />
       </Container>
