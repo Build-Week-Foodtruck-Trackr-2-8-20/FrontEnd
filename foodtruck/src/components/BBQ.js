@@ -2,7 +2,8 @@ import React from 'react';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import { makeStyles } from "@material-ui/core/styles";
-import bbqImg from '../images/jose-ignacio-pompe-s-Z-h0fEiBM-unsplash.jpg'
+import bbqImg from '../images/jose-ignacio-pompe-s-Z-h0fEiBM-unsplash.jpg';
+import { connect } from "react-redux";
 
 const useStyles = makeStyles({
   root: {
@@ -40,7 +41,8 @@ const useStyles = makeStyles({
 
 function BBQ(props) {
   const classes = useStyles();
-  const { truckMenus } = props;
+  const { trucks } = props;
+  console.log(props)
 
   return (
     <React.Fragment>
@@ -54,16 +56,16 @@ function BBQ(props) {
         <Container className={classes.content}>
           <Container className={classes.left}>
             <Typography>Truck</Typography>
-            {truckMenus.map(truckMenu => (
-                <div key={truckMenu.id}>
+            {props.trucks.map((truck) => (
+                <div key={truck.id}>
                   <p>Cuisine</p>
-                  <div>{truckMenu.cuisineType}</div>
+                  <div>{truck.cuisineType}</div>
                   <p>Departure Time</p>
-                  <div>{truckMenu.departureTime}</div>
+                  <div>{truck.departureTime}</div>
                   <p>Rating</p>
-                  <div>{truckMenu.customerRatingAvg} stars</div>
+                  <div>{truck.customerRatingAvg} stars</div>
                   <p>Location</p>
-                  <div>{truckMenu.location} stars</div>
+                  <div>{truck.location} stars</div>
                 </div>
             ))}
           </Container>
@@ -74,4 +76,11 @@ function BBQ(props) {
   );
 }
 
-export default BBQ;
+const mapStateToProps = (state) => {
+  console.log(state);
+  return {
+    trucks: state.trucks,
+  };
+};
+
+export default connect(mapStateToProps, {})(BBQ);
