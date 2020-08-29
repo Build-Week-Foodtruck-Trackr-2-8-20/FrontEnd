@@ -149,6 +149,11 @@ export default function Header() {
               Registration
             </Link>
           </ListItem>
+          <ListItem>
+            <Link to="/profile" className={classes.link}>
+              Profile
+            </Link>
+          </ListItem>
         </List>
       </Drawer>
     </div>

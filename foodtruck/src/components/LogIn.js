@@ -1,4 +1,4 @@
-import React, { useState, Fragment, useEffect } from "react";
+import React, { useState, Fragment } from "react";
 import Container from "@material-ui/core/Container";
 import { makeStyles } from "@material-ui/core/styles";
 import { Formik, Field } from "formik";
@@ -27,7 +27,7 @@ const userSchema = yup.object().shape({
 
 function LogIn(props) {
   const history = useHistory();
-  const [user, setUser] = useState(intialState);
+  const [user] = useState(intialState);
   const classes = useStyles();
 
   return (
@@ -37,19 +37,12 @@ function LogIn(props) {
           <Formik
             initialValues={user}
             onSubmit={(values, actions) => {
-              console.log(props.login.loggingIn);
               actions.setSubmitting(true);
 
               console.log(values);
               props.loginUser(values);
 
               setTimeout(() => {
-                // some experimentation --> trying to get the redirect to work
-                // console.log(props.login.loggedIn);
-                // if (props.login.loggedIn) {
-                //   history.push("/");
-                // }
-                //this one works!
                 actions.setSubmitting(props.login.loggingIn);
                 history.push("/");
               }, 500);
