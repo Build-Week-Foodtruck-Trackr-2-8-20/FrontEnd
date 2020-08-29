@@ -43,6 +43,7 @@ const useStyles = makeStyles({
 function Tacos(props) {
   const classes = useStyles();
   const { truckMenus } = props;
+  console.log(truckMenus)
 
   return (
     <React.Fragment>
