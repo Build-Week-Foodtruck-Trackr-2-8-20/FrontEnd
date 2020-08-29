@@ -91,6 +91,25 @@ export const addTruck = (truckObj) => (dispatch) => {
     .catch((err) => console.log(err))
 }
 
+export const deleteTruck = (truckId) => (dispatch) => {
+  axiosWithAuth()
+    .delete(`/api/trucks/${truckId}`)
+    .then((res) => {
+      console.log(res.data)
+      //dispatch
+    })
+    .catch((err) => console.log(err))
+}
+
+export const editTruck = (truckId, newTruckObj) => (dispatch) => {
+  axiosWithAuth()
+    .put(`/api/trucks/${truckId}`, newTruckObj)
+    .then((res) => {
+      console.log(res.data)
+    })
+    .catch((err) => console.log(err))
+}
+
 // menuObj = {itemName: "", itemDescription: "", itemPrice: "", customerRatingAvg: 0, truckid: 0}
 export const addMenuItem = (menuObj) => (dispatch) => {
   axiosWithAuth()
