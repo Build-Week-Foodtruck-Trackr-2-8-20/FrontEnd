@@ -41,7 +41,6 @@ const useStyles = makeStyles({
 
 function Korean(props) {
   const classes = useStyles();
-  const { truckMenus } = props;
 
   return (
     <React.Fragment>
@@ -53,18 +52,23 @@ function Korean(props) {
         <Container className={classes.content}>
           <Container className={classes.left}>
             <Typography>Truck</Typography>
-            {truckMenus.map((truckMenu) => (
-              <div key={truckMenu.id}>
-                <p>Cuisine</p>
-                <div>{truckMenu.cuisineType}</div>
-                <p>Departure Time</p>
-                <div>{truckMenu.departureTime}</div>
-                <p>Rating</p>
-                <div>{truckMenu.customerRatingAvg} stars</div>
-                <p>Location</p>
-                <div>{truckMenu.location} stars</div>
-              </div>
-            ))}
+            {props.trucks.map((truck) => {
+              if (truck.cuisineType === "Korean") {
+                return (
+                  <div key={truck.id}>
+                    <img src={truck.imageURL} />
+                    <p>Cuisine</p>
+                    <div>{truck.cuisineType}</div>
+                    {/* <p>Departure Time</p>
+                    <div>{truckMenu.departureTime}</div>
+                    <p>Rating</p>
+                    <div>{truckMenu.customerRatingAvg} stars</div> */}
+                    <p>Location</p>
+                    <div>{truck.location}</div>
+                  </div>
+                );
+              }
+            })}
           </Container>
           <Container className={classes.right}>
             <Typography>Menu</Typography>
