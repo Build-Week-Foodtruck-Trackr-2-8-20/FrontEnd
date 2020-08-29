@@ -43,49 +43,38 @@ const ImgSlider = (props) => {
   const slides = items.map((item) => {
     return (
       <CarouselItem
-        className="custom-tag"
         onExiting={() => setAnimating(true)}
         onExited={() => setAnimating(false)}
         key={item.src}>
-        <img src={item.src} alt={item.altText} className="custom-tag" />
+        <img src={item.src} alt={item.altText} />
         <CarouselCaption
           className="text-primary"
           captionHeader={item.caption}
-          captionText={item.caption}
         />
       </CarouselItem>
     );
   });
   return (
-    <div>
-      <style>
-        {`.custom-tag {
-              margin-top: 20px;
-              margin-bottom: 0px;
-              width: 100%;
-              border-radius: 0px;
-            }`}
-      </style>
-      <Carousel activeIndex={activeIndex} next={next} previous={previous}>
-        <CarouselIndicators
-          items={items}
-          activeIndex={activeIndex}
-          onClickHandler={goToIndex}
-        />
-        {slides}
-        <CarouselControl
-          direction="prev"
-          directionText="Previous"
-          onClickHandler={previous}
-        />
-        <CarouselControl
-          direction="next"
-          directionText="Next"
-          onClickHandler={next}
-        />
-        ]
-      </Carousel>
-    </div>
+    <Carousel activeIndex={activeIndex} next={next} previous={previous}>
+      <CarouselIndicators
+        items={items}
+        activeIndex={activeIndex}
+        onClickHandler={goToIndex}
+      />
+      {slides}
+      <CarouselControl
+        direction="prev"
+        directionText="Previous"
+        onClickHandler={previous}
+      />
+      <CarouselControl
+        direction="next"
+        directionText="Next"
+        onClickHandler={next}
+      />
+      ]
+    </Carousel>
   );
 };
+
 export default ImgSlider;
