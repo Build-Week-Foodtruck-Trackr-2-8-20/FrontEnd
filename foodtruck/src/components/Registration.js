@@ -30,19 +30,7 @@ const useStyles = makeStyles({
 
 function Registration(props) {
   const history = useHistory();
-  console.log(props);
   const classes = useStyles();
-  //const [value, setValue] = React.useState('diner');
-  /*
-  const [formState, setFormState] = useState({
-    id: Date.now(),
-    username: "",
-    email: "",
-    password: "",
-    role: "diner",
-  });*/
-
-  // console.log(formState);
 
   const formik = useFormik({
     initialValues: {
@@ -63,8 +51,6 @@ function Registration(props) {
     }),
 
     onSubmit: (values, { resetForm }) => {
-      console.log("Form submitted");
-      console.log("values: ", values);
       props.registerUser(values);
       resetForm();
       alert(JSON.stringify(values, null, 2));
@@ -129,14 +115,4 @@ function Registration(props) {
   );
 }
 
-const mapStateToProps = (state) => {
-  console.log(state);
-  return {
-    state,
-    // registration,
-  };
-};
-
-export default connect(mapStateToProps, {
-  registerUser,
-})(Registration);
+export default connect(null, { registerUser })(Registration);

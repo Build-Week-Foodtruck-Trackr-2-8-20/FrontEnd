@@ -1,24 +1,18 @@
 import {
   ADD_TRUCK_RATING,
-  GET_TRUCKS
+  GET_TRUCKS,
+  ADD_TRUCK,
+  EDIT_TRUCK,
+  DELETE_TRUCK
 } from "../actions/userActions"
 
 const initialState = [{
-  id: 0,
-  imageURL: "",
-  cuisineType: "",
-  location: "",
-  locationGPS: "",
-  departureTime: "",
-  customerRatingAvg: "",
-  username: "",
-  dinerRatingsArray: [],
+  isEditing: false
 }]
 
-export const trucks = (state = [], action) => {
+export const trucks = (state = initialState, action) => {
   switch (action.type) {
     case GET_TRUCKS:
-      console.log("action firing")
       return action.payload
     case ADD_TRUCK_RATING:
       return {
@@ -27,9 +21,22 @@ export const trucks = (state = [], action) => {
           ...state.dinerRatingsArray,
           action.payload
         ]
-      }
-      // case ADD_M
-      default:
-        return state
+      };
+    case ADD_TRUCK:
+      console.log("adding truck", action.payload)
+      return [
+        ...state,
+        action.payload
+      ]
+      // case EDIT_TRUCK:
+      //   console.log("editing truck")
+      //   return [
+      //     ...state,
+      //     action.payload
+      //   ]
+    case DELETE_TRUCK:
+      return state.filter(truck => truck.id !== action.payload);
+    default:
+      return state
   }
 }

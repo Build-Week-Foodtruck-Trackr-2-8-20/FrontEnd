@@ -4,27 +4,19 @@ import ReactDOM from "react-dom";
 import { BrowserRouter as Router } from "react-router-dom";
 import "./index.css";
 import App from "./App";
-import { createStore, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
-import thunk from "redux-thunk";
-import { rootReducer } from "./reducers/index";
+import { PersistGate } from "redux-persist/integration/react";
+import stores from "./helpers/configureStore";
 
-const store = createStore(rootReducer, applyMiddleware(thunk));
+const { store, persistor } = stores();
 
 ReactDOM.render(
   <Provider store={store}>
-    <Router>
-      <App />
-    </Router>
+    <PersistGate loading={null} persistor={persistor}>
+      <Router>
+        <App />
+      </Router>
+    </PersistGate>
   </Provider>,
   document.getElementById("root")
 );
-
-// const allStuff = document.querySelector('img')
-//    allStuff.addEventListener("mouseenter", event => {
-//     allStuff.style.transform = "scale(1.1)";
-//   });
-
-//   allStuff.addEventListener("mouseleave", event => {
-//     allStuff.style.transform = "scale(1)";
-//   });

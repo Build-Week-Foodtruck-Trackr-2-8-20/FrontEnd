@@ -42,7 +42,6 @@ const useStyles = makeStyles({
 
 function Tacos(props) {
   const classes = useStyles();
-  const { truckMenus } = props;
 
   return (
     <React.Fragment>
@@ -55,7 +54,7 @@ function Tacos(props) {
           <Container className={classes.left}>
             <Typography>Truck</Typography>
             {props.trucks.map((truck) => {
-              if (truck.cuisineType === "Mexican" || truck.cuisineType === "") {
+              if (truck.cuisineType === "Mexican") {
                 return (
                   <div key={truck.id}>
                     <img src={truck.imageURL} />
@@ -82,7 +81,6 @@ function Tacos(props) {
 }
 
 const mapStateToProps = (state) => {
-  console.log(state);
   return {
     trucks: state.trucks,
   };

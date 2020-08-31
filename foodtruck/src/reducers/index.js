@@ -10,9 +10,9 @@ import {
 import {
   user
 } from "./user";
-import {
-  operator
-} from "./operator";
+// import {
+//   operator
+// } from "./operator";
 import {
   trucks
 } from "./trucks";
@@ -21,6 +21,5 @@ export const rootReducer = combineReducers({
   registration,
   login,
   user,
-  operator,
   trucks
 })

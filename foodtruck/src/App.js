@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import LogIn from "./components/LogIn";
 import Registration from "./components/Registration";
 import { Route, Switch } from "react-router-dom";
@@ -10,22 +10,8 @@ import Tacos from "./components/Tacos";
 import Home from "./components/Home";
 import Profile from "./components/Profile";
 import PrivateRoute from "./components/privateRoute";
-import { axiosWithAuth } from "./components/axiosWithAuth";
-import { getTrucks } from "./actions/userActions";
-import { useDispatch } from "react-redux";
 
 function App() {
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    axiosWithAuth()
-      .get("https://food-truck-lambda.herokuapp.com/api/trucks")
-      .then((res) => {
-        dispatch(getTrucks(res.data));
-      })
-      .catch((err) => console.log("Server error", err));
-  }, []);
-
   return (
     <div className="App">
       <Header />

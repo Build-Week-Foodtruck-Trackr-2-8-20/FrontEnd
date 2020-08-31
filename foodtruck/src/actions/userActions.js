@@ -14,12 +14,14 @@ export const LOGIN_FAILURE = "LOGIN_FAILURE";
 export const ADD_GPS_LOCATION = "ADD_GPS_LOCATION";
 export const ADD_MANUAL_LOCATION = "ADD_MANUAL_LOCATION";
 export const ADD_TRUCK = "ADD_TRUCK";
+export const EDIT_TRUCK = "EDIT_TRUCK";
 export const ADD_MENU_ITEM = "ADD_MENU_ITEM";
 export const ADD_MENU_ITEM_PHOTO = "ADD_MENU_ITEM_PHOTO";
 export const ADD_FAVORITE = "ADD_FAVORITE";
 export const REMOVE_FAVORITE = "REMOVE_FAVORITE";
 export const ADD_TRUCK_RATING = "ADD_TRUCK_RATING";
 export const GET_TRUCKS = "GET_TRUCKS";
+export const DELETE_TRUCK = "DELETE_TRUCK";
 
 // registerObj = {username: "", email: "", password: "", role: 0, location: "//optional", locationGPS: "//optional"}
 export const registerUser = (registerObj) => (dispatch) => {
@@ -75,17 +77,35 @@ export const loginUser = (loginObj) => (dispatch) => {
     });
 };
 
+export const getOperator = (operatorId) => (dispatch) => {
+  axiosWithAuth()
+    .get(`/api/operators/${operatorId}`)
+    .then(res => console.log(res))
+    .catch((err) => console.log(err))
+}
+
+export const getDiner = (dinerId) => (dispatch) => {
+  axiosWithAuth()
+    .get(`/api/diners/${dinerId}`)
+    .then((res) => console.log(res))
+    .catch((err) => console.log(err))
+}
+
 // OPERATOR EXCLUSIVE ACTIONS
 
 // truckObj = {imageURL: "", cuisineType: "", location: "", locationGPS: "", departureTime: "", customerRatingAvg: 0, username: " //username of operator "}
 export const addTruck = (truckObj) => (dispatch) => {
+  console.log(truckObj);
   axiosWithAuth()
-    .post("https://food-truck-lambda.herokuapp.com/api/trucks", truckObj)
+    .post("/api/trucks", truckObj)
     .then((res) => {
-      console.log(res.data)
+      // res.data is { created: id }
       dispatch({
         type: ADD_TRUCK,
-        payload: res.data
+        payload: {
+          id: res.data.created,
+          ...truckObj
+        }
       })
     })
     .catch((err) => console.log(err))
@@ -96,16 +116,20 @@ export const deleteTruck = (truckId) => (dispatch) => {
     .delete(`/api/trucks/${truckId}`)
     .then((res) => {
       console.log(res.data)
-      //dispatch
+      dispatch({
+        type: DELETE_TRUCK,
+        payload: truckId
+      })
     })
     .catch((err) => console.log(err))
 }
 
-export const editTruck = (truckId, newTruckObj) => (dispatch) => {
+export const editTruck = (newTruckObj) => (dispatch) => {
+  console.log("EDIT TRUCK", newTruckObj.id);
   axiosWithAuth()
-    .put(`/api/trucks/${truckId}`, newTruckObj)
+    .put(`/api/trucks/${newTruckObj.id}`, newTruckObj)
     .then((res) => {
-      console.log(res.data)
+      console.log(res);
     })
     .catch((err) => console.log(err))
 }

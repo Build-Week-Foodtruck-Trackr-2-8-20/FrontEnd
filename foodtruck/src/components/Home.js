@@ -1,9 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import Typography from "@material-ui/core/Typography";
 import Container from "@material-ui/core/Container";
 import { makeStyles } from "@material-ui/core/styles";
 import ImgSlider from "./Carousel";
 import Cards from "./cards";
+import { connect, useDispatch } from "react-redux";
+import { axiosWithAuth } from "./axiosWithAuth";
+import { getTrucks } from "../actions/userActions";
 
 const useStyles = makeStyles({
   root: {
@@ -37,8 +40,20 @@ const useStyles = makeStyles({
   },
 });
 
-function Home() {
+function Home(props) {
   const classes = useStyles();
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    axiosWithAuth()
+      .get("/api/trucks")
+      .then((res) => {
+        console.log("Home: firing");
+        dispatch(getTrucks(res.data));
+      })
+      .catch((err) => console.log("Server error", err));
+  }, [props.login.loggedIn]);
 
   return (
     <React.Fragment>
@@ -53,4 +68,12 @@ function Home() {
   );
 }
 
-export default Home;
+const mapStateToProps = (state) => {
+  return {
+    user: state.user,
+    trucks: state.trucks,
+    login: state.login,
+  };
+};
+
+export default connect(mapStateToProps, { getTrucks })(Home);
