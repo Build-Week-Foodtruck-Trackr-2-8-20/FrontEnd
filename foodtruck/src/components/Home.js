@@ -4,7 +4,7 @@ import Container from "@material-ui/core/Container";
 import { makeStyles } from "@material-ui/core/styles";
 import { connect } from "react-redux";
 //import '../App.css';
-//import ImgSlider from "./Carousel";
+import ImgSlider from "./Carousel";
 import Cards from "./cards";
 
 const useStyles = makeStyles({
@@ -49,6 +49,7 @@ function Home() {
         <Container className={classes.header}>
 
         </Container>
+        <ImgSlider/>
         <Cards />
       </Container>
     </React.Fragment>
